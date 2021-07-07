@@ -37,7 +37,7 @@ const routes = [
         component: () => import('../views/Dashboard/index.vue')
       }
     ]
-  }, 
+  },
   {
     path: '/',
     component: Home,
@@ -65,7 +65,7 @@ const asyncRoutes = [
     leaf: true,
     children: [
       {
-        name: '表格',
+        name: '老人信息',
         path: '/admin',
         component: () => import('../views/AdminTable/index.vue'),
         meta: {
@@ -77,7 +77,7 @@ const asyncRoutes = [
   {
     path: '/',
     component: Home,
-    name: '图表',
+    name: '统计数据',
     iconCls: 'el-icon-s-data',
     leaf: false,
     children: [
@@ -100,7 +100,7 @@ const asyncRoutes = [
         }
       }
     ]
-  }, 
+  },
   {
     path: '/',
     component: Home,
@@ -109,7 +109,7 @@ const asyncRoutes = [
     leaf: true,
     children: [
       {
-        name: 'Form表单',
+        name: '修改信息',
         path: '/form',
         component: () => import('../views/Form/index.vue'),
         meta: {

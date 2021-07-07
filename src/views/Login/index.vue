@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="0px" class="loginForm">
-      <h1 class="loginTitle">后台系统</h1>
+      <h1 class="loginTitle">智慧养老系统</h1>
       <el-form-item prop="name">
         <el-input type="text" v-model="ruleForm.name" placeholder="请输入账号" autocomplete="off"></el-input>
       </el-form-item>
@@ -111,7 +111,7 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100%;
-  background-image: url('../../../public/img/background.jpeg');
+  background-image: url('../../../public/img/elderly-care.jpg');
   background-size: 100% 100%;
   &Form {
     -webkit-border-radius: 20px;
@@ -121,14 +121,17 @@ export default {
     margin: 180px auto;
     width: 350px;
     padding: 35px 50px 20px 50px;
-    background-image: linear-gradient(to right, rgba(	245,245,220,0.9), rgba(255,255,224,0.85));
+    //background-image: linear-gradient(to right, rgba(	245,245,220,0.9), rgba(255,255,224,0.85));
+    background-image: linear-gradient(to right top, green, yellowgreen);
+    opacity: 90%;
     border: 1px solid #eaeaea;
-    // box-shadow: 0 0 5px #AFEEEE; 
+    // box-shadow: 0 0 5px #AFEEEE;
   }
   &Title {
     margin: 0 0 20px 0;
     text-align: center;
     font-size: 1.8rem;
+    font-family: "Microsoft YaHei",serif;
   }
   &Button {
     width: 50%;

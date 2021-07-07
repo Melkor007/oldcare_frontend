@@ -20,7 +20,7 @@
             <el-avatar :src="avatarUrl" :alt="'头像'"></el-avatar>
             <i class="el-icon-caret-bottom el-icon--right" style="font-size:15px; height: 1px"></i>
           </p>
-        </span>      
+        </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item @click.native="dialogVisible = true">编辑</el-dropdown-item>
           <el-dropdown-item @click.native="logOut">退出登录</el-dropdown-item>
@@ -41,7 +41,7 @@ import HeadEdit from './HeadEdit/HeadEdit.vue'
   components: {HeadEdit}
 })
 export default class HeadBar extends Vue {
-  name: string = "后台系统"
+  name: string = "智慧养老系统"
   avatarUrl: string = require('@/assets/avatar/avatar.jpg')
   dialogVisible: boolean = false
 
@@ -84,27 +84,27 @@ export default class HeadBar extends Vue {
   flex-flow: row nowrap;
   line-height: 50px;
   // background-color: #20B2AA;
-  background-image: linear-gradient(to right,rgba(0,128,128, 0.8), rgba(255,248,220, 1));
+  background-image: linear-gradient(to left,lightcyan,lightblue);
 
   &Start {
     width: 198px;
     font-weight: bold;
-    border-right: 2px solid #2F4F4F;     
-    background-image:-webkit-linear-gradient(left,	#FFD700,#FFF8DC); 
-    -webkit-background-clip:text; 
-    -webkit-text-fill-color:transparent; 
+    border-right: 2px solid #2F4F4F;
+    background-image:-webkit-linear-gradient(left,	#FFD700,#FFF8DC);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
   }
 
   &StartFold {
     width: 62px;
-    border-right: 2px solid #2F4F4F;  
+    border-right: 2px solid #2F4F4F;
   }
 
   &Middle {
     flex: 1 0 auto;
 
     i {
-      float: left; 
+      float: left;
       line-height: 50px;
       margin-left: 10px;
     }
@@ -127,7 +127,7 @@ export default class HeadBar extends Vue {
         width: 30px;
         height: 30px;
         border-radius: 15px;
-        background-image: linear-gradient(to right, rgba(0,255,255,0.4), rgba(0,206,209,1));       
+        background-image: linear-gradient(to right, rgba(0,255,255,0.4), rgba(0,206,209,1));
       }
     }
   }
