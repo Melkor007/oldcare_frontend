@@ -13,16 +13,16 @@ import 'echarts/lib/CoordinateSystem'
 })
 export default class LineChart extends Vue{
   @Prop() private id !: string
-  @Prop() private width !: String 
-  @Prop() private height !: String 
+  @Prop() private width !: String
+  @Prop() private height !: String
 
   pieRadius = 30;
   scatterData = this.getVirtulData();
   pieInitialized = false
 
   public getVirtulData() {
-    var date = +echarts['number'].parseDate('2017-02-01');
-    var end = +echarts['number'].parseDate('2017-03-01');
+    var date = +echarts['number'].parseDate('2021-07-01');
+    var end = +echarts['number'].parseDate('2021-08-01');
     var dayTime = 3600 * 24 * 1000;
     var data:Array<any> = [];
     for (var time = date; time < end; time += dayTime) {
@@ -49,9 +49,9 @@ export default class LineChart extends Vue{
         },
         radius: this.pieRadius,
         data: [
-          {name: '工作', value: Math.round(Math.random() * 24)},
-          {name: '娱乐', value: Math.round(Math.random() * 24)},
-          {name: '睡觉', value: Math.round(Math.random() * 24)}
+          {name: '喜悦', value: Math.round(Math.random() * 24)},
+          {name: '正常', value: Math.round(Math.random() * 24)},
+          {name: '伤心', value: Math.round(Math.random() * 24)}
         ]
       };
     });
@@ -59,7 +59,7 @@ export default class LineChart extends Vue{
 
   public initChart() {
     this.chart = echarts.init(<HTMLDivElement | HTMLCanvasElement>document.getElementById(this.id))
-    
+
     var cellSize = [80, 80];
 
     var option = {
@@ -75,7 +75,7 @@ export default class LineChart extends Vue{
       },
       tooltip : {},
       legend: {
-        data: ['工作', '娱乐', '睡觉'],
+        data: ['喜悦', '正常', '伤心'],
         bottom: 20
       },
       calendar: {
@@ -86,18 +86,22 @@ export default class LineChart extends Vue{
         yearLabel: {
           show: false,
           textStyle: {
-            fontSize: 30
+            fontSize: 50
           }
         },
         dayLabel: {
-          margin: 20,
+          margin: 100,
           firstDay: 1,
-          nameMap: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+          nameMap: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+          textStyle:{
+            color: '#fff',
+            fontSize: '12'
+          }
         },
         monthLabel: {
           show: false
         },
-        range: ['2017-02']
+        range: ['2021-07']
       },
       series: [{
         id: 'label',
@@ -112,7 +116,7 @@ export default class LineChart extends Vue{
             },
             offset: [-cellSize[0] / 2 + 10, -cellSize[1] / 2 + 10],
             textStyle: {
-              color: '#000',
+              color: '#000000',
               fontSize: 14
             }
           }
@@ -120,7 +124,7 @@ export default class LineChart extends Vue{
         data: this.scatterData
       }]
     };
-    
+
     setTimeout(() => {
         this.pieInitialized = true;
         this.chart.setOption(option)

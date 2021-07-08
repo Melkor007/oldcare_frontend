@@ -19,7 +19,7 @@
       <el-card class="dashRowItem" shadow="always">
         <p class="dashRowItemKey">D</p>
         <p class="dashRowItemTitle">删除数据</p>
-        {{deleteData}} 
+        {{deleteData}}
       </el-card>
     </div>
 
@@ -63,7 +63,7 @@ import TodoList from './components/TodoList.vue'
 import CoolClock from './components/CoolClock.vue'
 
 @Component({
-  components: { 
+  components: {
     LineChart,
     RadarChart,
     PieChart,
@@ -125,7 +125,7 @@ export default class DashBoard extends Vue {
         text-align: center;
         line-height: 50px;
         border: 2px solid rgb(113, 125, 126);
-        // -webkit-transform: rotate(-30deg); 
+        // -webkit-transform: rotate(-30deg);
         transform: rotate(-60deg);
         transition: width 0.2s, height 0.2s;
         -moz-transition: width 0.2s, height 0.2s, -moz-transform 0.2s; /* Firefox 4 */

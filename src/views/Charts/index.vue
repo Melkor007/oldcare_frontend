@@ -36,7 +36,7 @@ export default {
 
   data() {
     return {
-      activeName: 'line'
+      activeName: 'bar'
     }
   },
 
@@ -60,7 +60,7 @@ export default {
 
   methods: {
     handleClick(tab, event) {
-      // console.log(tab, event)
+       // console.log(tab, event)
     }
   }
 }
@@ -87,7 +87,7 @@ export default {
   }
 
   &Content {
-    width: 100%; 
+    width: 100%;
     flex: 1 1 90%;
     margin: 5px 0 0 0;
     // border: 2px solid blue;

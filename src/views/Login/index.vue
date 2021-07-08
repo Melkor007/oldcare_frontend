@@ -11,7 +11,7 @@
       <div class="loginRem">
         <el-checkbox label="记住密码 (账号/密码:admin/admin或editor/editor)" v-model="remember"></el-checkbox>
       </div>
-      <div class="loginRem" style="font-size: 0.3rem; margin-top:-15px">
+      <div class="loginRem" style="font-size: 0.9rem; margin-top:-15px">
         注: 两个账号对应不同的路由权限
       </div>
       <el-form-item>

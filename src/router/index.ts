@@ -33,7 +33,7 @@ const routes = [
     children: [
       {
         path: '/dashboard',
-        name: '首页',
+        name: '主页',
         component: () => import('../views/Dashboard/index.vue')
       }
     ]
@@ -60,14 +60,33 @@ const asyncRoutes = [
   {
     path: '/',
     component: Home,
-    name: '',
+    name: '人员信息',
     iconCls: 'el-icon-s-grid',
-    leaf: true,
+    leaf: false,
     children: [
       {
         name: '老人信息',
-        path: '/admin',
+        iconCls: 'el-icon-s-custom',
+        path: '/personnelOld',
         component: () => import('../views/AdminTable/index.vue'),
+        meta: {
+          roles: ['admin', 'editor']  // 该部分和权限相关
+        }
+      },
+      {
+        name: '员工信息',
+        iconCls: 'el-icon-s-custom',
+        path: '/personnelStaff',
+        component: () => import('../views/StaffTable/index.vue'),
+        meta: {
+          roles: ['admin', 'editor']  // 该部分和权限相关
+        }
+      },
+      {
+        name: '义工信息',
+        iconCls: 'el-icon-s-custom',
+        path: '/personnelVolunteer',
+        component: () => import('../views/VolunteerTable/index.vue'),
         meta: {
           roles: ['admin', 'editor']  // 该部分和权限相关
         }
@@ -105,11 +124,11 @@ const asyncRoutes = [
     path: '/',
     component: Home,
     name: '',
-    iconCls: 'el-icon-share',
+    iconCls: 'el-icon-coin',
     leaf: true,
     children: [
       {
-        name: '修改信息',
+        name: '事件记录',
         path: '/form',
         component: () => import('../views/Form/index.vue'),
         meta: {
