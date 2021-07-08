@@ -24,6 +24,12 @@
     </div>
 
     <div class="dashRow">
+      <div class="dashRowVideo">
+        <video-player></video-player>
+      </div>
+    </div>
+
+    <div class="dashRow">
       <div class="dashRowMiddle">
         <line-chart></line-chart>
       </div>
@@ -61,6 +67,7 @@ import BarChart from './components/BarChart.vue'
 import SwiperImg from './components/SwiperImg.vue'
 import TodoList from './components/TodoList.vue'
 import CoolClock from './components/CoolClock.vue'
+import VideoPlayer from './components/VideoPlayer.vue'
 
 @Component({
   components: {
@@ -70,7 +77,8 @@ import CoolClock from './components/CoolClock.vue'
     BarChart,
     SwiperImg,
     TodoList,
-    CoolClock
+    CoolClock,
+    VideoPlayer
   }
 })
 export default class DashBoard extends Vue {
@@ -99,7 +107,7 @@ export default class DashBoard extends Vue {
     margin-bottom: 40px;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     // border: 2px solid red;
 
