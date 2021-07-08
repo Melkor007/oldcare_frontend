@@ -74,7 +74,7 @@ import CoolClock from './components/CoolClock.vue'
   }
 })
 export default class DashBoard extends Vue {
-  createData: string = "1,000,000"
+  createData: string = "1,000"
   retreiveData: string = "2,000"
   updateData: string = "500"
   deleteData: string = "1,000"

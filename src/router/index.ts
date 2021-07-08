@@ -101,23 +101,24 @@ const asyncRoutes = [
     leaf: false,
     children: [
       {
-        name: '图表Tab',
+        name: '图表',
         iconCls: 'el-icon-help',
         path: '/chart',
         component: () => import('../views/Charts/index.vue'),
         meta: {
           roles: ['admin']
         }
-      },
-      {
-        name: '图标Icon',
-        iconCls: 'el-icon-bicycle',
-        path: '/icon',
-        component: () => import('../views/Icon/index.vue'),
-        meta: {
-          roles: ['admin', 'editor']
-        }
       }
+      // ,
+      // {
+      //   name: '图标Icon',
+      //   iconCls: 'el-icon-bicycle',
+      //   path: '/icon',
+      //   component: () => import('../views/Icon/index.vue'),
+      //   meta: {
+      //     roles: ['admin', 'editor']
+      //   }
+      // }
     ]
   },
   {

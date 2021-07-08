@@ -12,8 +12,8 @@ declare let echarts: any;
 })
 export default class LineChart extends Vue{
   @Prop() private id !: string
-  @Prop() private width !: String 
-  @Prop() private height !: String 
+  @Prop() private width !: String
+  @Prop() private height !: String
 
   public initChart() {
     this.chart = echarts.init(document.getElementById(this.id))
@@ -21,7 +21,7 @@ export default class LineChart extends Vue{
       backgroundColor: '#344b58',
       title: {
         top: 20,
-        text: 'Requests',
+        text: '陌生人检测记录',
         textStyle: {
           fontWeight: 'normal',
           fontSize: 16,
@@ -43,7 +43,7 @@ export default class LineChart extends Vue{
         itemWidth: 14,
         itemHeight: 5,
         itemGap: 13,
-        data: ['移动', '联通', '电信'],
+        data: ['与老人互动', '与员工互动', '与义工互动', "没有互动"],
         right: '4%',
         textStyle: {
           fontSize: 12,
@@ -91,7 +91,7 @@ export default class LineChart extends Vue{
         }
       }],
       series: [{
-        name: '移动',
+        name: '与老人互动',
         type: 'line',
         smooth: true,
         symbol: 'circle',
@@ -125,7 +125,7 @@ export default class LineChart extends Vue{
         },
         data: [220, 182, 191, 134, 150, 120, 110, 125, 145, 122, 165, 122]
       }, {
-        name: '联通',
+        name: '与员工互动',
         type: 'line',
         smooth: true,
         symbol: 'circle',
@@ -159,7 +159,7 @@ export default class LineChart extends Vue{
         },
         data: [120, 110, 125, 145, 122, 165, 122, 220, 182, 191, 134, 150]
       }, {
-        name: '电信',
+        name: '与义工互动',
         type: 'line',
         smooth: true,
         symbol: 'circle',
@@ -191,6 +191,40 @@ export default class LineChart extends Vue{
           }
         },
         data: [220, 182, 125, 145, 122, 191, 134, 150, 120, 110, 165, 122]
+      },{
+        name: '没有互动',
+        type: 'line',
+        smooth: true,
+        symbol: 'circle',
+        symbolSize: 5,
+        showSymbol: false,
+        lineStyle: {
+          normal: {
+            width: 1
+          }
+        },
+        areaStyle: {
+          normal: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+              offset: 0,
+              color: 'rgba(220,216,51,0.72)'
+            }, {
+              offset: 0.8,
+              color: 'rgba(137, 189, 27, 0)'
+            }], false),
+            shadowColor: 'rgba(0, 0, 0, 0.1)',
+            shadowBlur: 10
+          }
+        },
+        itemStyle: {
+          normal: {
+            color: 'rgba(220,216,51,0.72)',
+            borderColor: 'rgba(220,216,51,0.72)',
+            borderWidth: 12
+
+          }
+        },
+        data: [250, 145, 200, 210, 156, 140, 150, 210, 130, 122, 140, 110]
       }]
     })
   }

@@ -18,13 +18,13 @@ export default class LineChart extends Vue{
     this.chart = echarts.init(document.getElementById('chartLine'));
     this.chart.setOption({
       title: {
-        text: '数据趋势图'
+        text: '员工与老人互动数'
       },
       tooltip: {
         trigger: 'axis',
       },
       legend: {
-        data:['实际情况','理想']
+        data:['互动情况']
       },
       grid: {
         left: 10,
@@ -46,28 +46,29 @@ export default class LineChart extends Vue{
       },
       series: [
         {
-          name:'实际情况',
+          name:'互动情况',
           type:'line',
           smooth: true,
           animationDuration: 2800,
           animationEasing: 'cubicInOut',
           data: [100, 120, 161, 134, 105, 160, 165]
-        },
-        {
-          name:'理想',
-          type:'line',
-          itemStyle: {
-            normal: {
-              areaStyle: {
-                color: '#f3f8ff'
-              }
-            }
-          },
-          smooth: true,
-          animationDuration: 2800,
-          animationEasing: 'quadraticOut',
-          data:[120, 82, 91, 154, 162, 140, 145]
         }
+        // ,
+        // {
+        //   name:'理想',
+        //   type:'line',
+        //   itemStyle: {
+        //     normal: {
+        //       areaStyle: {
+        //         color: '#f3f8ff'
+        //       }
+        //     }
+        //   },
+        //   smooth: true,
+        //   animationDuration: 2800,
+        //   animationEasing: 'quadraticOut',
+        //   data:[120, 82, 91, 154, 162, 140, 145]
+        // }
       ]
     })
   }

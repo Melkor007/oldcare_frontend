@@ -54,7 +54,17 @@ export default class BarChart extends Vue{
           name:'邮件营销',
           type:'bar',
           stack: '广告',
-          data:[120, 132, 101, 134, 90, 230, 210]
+          data:[120, 132, 101, 134, 90, 230, 210],
+          markLine : {
+            lineStyle: {
+              normal: {
+                type: 'dashed'
+              }
+            },
+            data : [
+              [{type : 'min'}, {type : 'max'}]
+            ]
+          }
         },
         {
           name:'联盟广告',
@@ -75,7 +85,7 @@ export default class BarChart extends Vue{
           markLine : {
             lineStyle: {
               normal: {
-                type: 'dashed'
+                type: 'solid'
               }
             },
             data : [

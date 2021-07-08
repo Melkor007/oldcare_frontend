@@ -19,7 +19,7 @@ export default class LineChart extends Vue{
     this.chart.setOption({
       title : {
         text: '用户访问来源',
-        subtext: '纯属虚构',
+        subtext: '样例',
         x:'center'
       },
       tooltip : {
