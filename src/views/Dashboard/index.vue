@@ -1,55 +1,15 @@
 <template>
   <div class="dash">
+
     <div class="dashRow">
-      <el-card class="dashRowItem" shadow="always">
-        <p class="dashRowItemKey">C</p>
-        <p class="dashRowItemTitle">新增数据</p>
-        {{createData}}
-      </el-card>
-      <el-card class="dashRowItem" shadow="always">
-        <p class="dashRowItemKey">R</p>
-        <p class="dashRowItemTitle">读取数据</p>
-        {{retreiveData}}
-      </el-card>
-      <el-card class="dashRowItem" shadow="always">
-        <p class="dashRowItemKey">U</p>
-        <p class="dashRowItemTitle">修改数据</p>
-        {{updateData}}
-      </el-card>
-      <el-card class="dashRowItem" shadow="always">
-        <p class="dashRowItemKey">D</p>
-        <p class="dashRowItemTitle">删除数据</p>
-        {{deleteData}}
-      </el-card>
+        <video-player class="video-player vjs-custom-skin"></video-player>
     </div>
 
     <div class="dashRow">
-      <div class="dashRowVideo">
-        <video-player></video-player>
-      </div>
+        <video-player class="video-player-1 vjs-custom-skin"></video-player>
     </div>
 
     <div class="dashRow">
-      <div class="dashRowMiddle">
-        <line-chart></line-chart>
-      </div>
-    </div>
-
-    <div class="dashRow">
-      <div class="dashRowGraph">
-        <radar-chart></radar-chart>
-      </div>
-      <div class="dashRowGraph">
-        <pie-chart></pie-chart>
-      </div>
-      <div class="dashRowGraph">
-        <bar-chart></bar-chart>
-      </div>
-    </div>
-
-    <div class="dashRow">
-      <swiper-img class="dashRowSwiper"></swiper-img>
-      <todo-list class="dashRowTodo"></todo-list>
       <cool-clock class="dashRowClock"></cool-clock>
     </div>
 
@@ -68,24 +28,22 @@ import SwiperImg from './components/SwiperImg.vue'
 import TodoList from './components/TodoList.vue'
 import CoolClock from './components/CoolClock.vue'
 import VideoPlayer from './components/VideoPlayer.vue'
+import VideoPlayer1 from './components/VideoPlayer1.vue'
 
 @Component({
   components: {
-    LineChart,
-    RadarChart,
-    PieChart,
-    BarChart,
-    SwiperImg,
-    TodoList,
+    // LineChart,
+    // RadarChart,
+    // PieChart,
+    // BarChart,
+    // SwiperImg,
+    // TodoList,
     CoolClock,
-    VideoPlayer
+    VideoPlayer,
+    VideoPlayer1
   }
 })
 export default class DashBoard extends Vue {
-  createData: string = "1,000"
-  retreiveData: string = "2,000"
-  updateData: string = "500"
-  deleteData: string = "1,000"
   chartLine: any
 }
 </script>

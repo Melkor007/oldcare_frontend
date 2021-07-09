@@ -1,7 +1,7 @@
 <template>
-  <div class="my_video">
-    <video-player
-      class="video-player vjs-custom-skin"
+  <div class="my_video1">
+    <video-player-1
+      class="video-player-1 vjs-custom-skin"
       ref="videoPlayer"
       :playsinline="true"
       :options="options"
@@ -17,7 +17,7 @@
       @statechanged="playerStateChanged($event)"
       @ready="playerReadied"
     >
-    </video-player>
+    </video-player-1>
   </div>
 </template>
 
@@ -55,7 +55,7 @@ export default {
         controlBar: {
           timeDivider: true, // 是否显示当前时间和持续时间的分隔符，"/"
           durationDisplay: true, // 是否显示持续时间
-          remainingTimeDisplay: true, // 是否显示剩余时间
+          remainingTimeDisplay: false, // 是否显示剩余时间
           fullscreenToggle: true, // 是否显示全屏按钮
         },
       },
@@ -113,12 +113,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 .my_video {
-  width: 1300px;
-  height: 1000px;
+  width: 1000px;
+  height: 800px;
   margin: 50px;
   text-align: center;
 }
-
 </style>
