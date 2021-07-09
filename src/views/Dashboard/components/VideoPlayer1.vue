@@ -1,6 +1,6 @@
 <template>
   <div class="my_video1">
-    <video-player-1
+    <video-player
       class="video-player-1 vjs-custom-skin"
       ref="videoPlayer"
       :playsinline="true"
@@ -17,7 +17,7 @@
       @statechanged="playerStateChanged($event)"
       @ready="playerReadied"
     >
-    </video-player-1>
+    </video-player>
   </div>
 </template>
 

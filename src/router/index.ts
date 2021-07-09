@@ -144,6 +144,7 @@ const asyncRoutes = [
     name: '',
     iconCls: 'el-icon-star-on',
     leaf: true,
+    hidden: true,
     children: [
       {
         name: 'Vuex使用',
@@ -161,6 +162,7 @@ const asyncRoutes = [
     name: '',
     iconCls: 'el-icon-edit-outline',
     leaf: true,
+    hidden: true,
     children: [
       {
         name: '富文本',

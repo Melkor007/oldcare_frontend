@@ -6,10 +6,6 @@
     </div>
 
     <div class="dashRow">
-        <video-player class="video-player-1 vjs-custom-skin"></video-player>
-    </div>
-
-    <div class="dashRow">
       <cool-clock class="dashRowClock"></cool-clock>
     </div>
 
