@@ -25,5 +25,53 @@ export default  {
 
   deleteAdminList: async (params: any) => {
     return await axios.delete(`${baseUrl}admin`, { params }).then(res => res).catch(err => err)
+  },
+
+  getPersonnelOldList: async (params: any) => {
+    return await axios.get(`${baseUrl}PersonnelOld`, {params}).then(res => res.data).catch(err => err)
+  },
+
+  postPersonnelOldList: async (params: any) => {
+    return await axios.post(`${baseUrl}PersonnelOld`, { params }).then(res => res).catch(err => err)
+  },
+
+  putPersonnelOldList: async (params: any) => {
+    return await axios.put(`${baseUrl}PersonnelOld`, { params }).then(res => res).catch(err => err)
+  },
+
+  deletePersonnelOldList: async (params: any) => {
+    return await axios.delete(`${baseUrl}PersonnelOld`, { params }).then(res => res).catch(err => err)
+  },
+
+  getStaffList: async (params: any) => {
+    return await axios.get(`${baseUrl}Staff`, {params}).then(res => res.data).catch(err => err)
+  },
+
+  postStaffList: async (params: any) => {
+    return await axios.post(`${baseUrl}Staff`, { params }).then(res => res).catch(err => err)
+  },
+
+  putStaffList: async (params: any) => {
+    return await axios.put(`${baseUrl}Staff`, { params }).then(res => res).catch(err => err)
+  },
+
+  deleteStaffList: async (params: any) => {
+    return await axios.delete(`${baseUrl}Staff`, { params }).then(res => res).catch(err => err)
+  },
+
+  getVolunteerList: async (params: any) => {
+    return await axios.get(`${baseUrl}Volunteer`, {params}).then(res => res.data).catch(err => err)
+  },
+
+  postVolunteerList: async (params: any) => {
+    return await axios.post(`${baseUrl}Volunteer`, { params }).then(res => res).catch(err => err)
+  },
+
+  putVolunteerList: async (params: any) => {
+    return await axios.put(`${baseUrl}Volunteer`, { params }).then(res => res).catch(err => err)
+  },
+
+  deleteVolunteerList: async (params: any) => {
+    return await axios.delete(`${baseUrl}Volunteer`, { params }).then(res => res).catch(err => err)
   }
 }
