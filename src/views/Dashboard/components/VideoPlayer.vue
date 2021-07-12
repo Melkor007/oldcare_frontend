@@ -33,6 +33,7 @@
 <script>
 import Vue from "vue";
 import VideoPlayer from "vue-video-player";
+import 'videojs-flash'
 // require('video.js/dist/video-js.css')  //按官网引会找不到然后报错
 require("vue-video-player/node_modules/video.js/dist/video-js.css");
 require("vue-video-player/src/custom-theme.css");
@@ -71,10 +72,15 @@ export default {
           fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
           sources: [
             {
-              type: "video/mp4",
-              src: this.videoList[i].video //url地址
+              // type: "video/mp4",
+              // src: this.videoList[i].video //url地址
+              type: 'rtmp/mp4',
+              src: 'rtmp://58.200.131.2:1935/livetv/hunantv'
+              // type:'rtmp/flv',
+              // src:"rtmp://localhost:1935/mylive/test"
               }
           ],
+          techOrder: ['flash'],
           poster: "", //封面地址
           notSupportedMessage: "此视频暂无法播放，请稍后再试", //允许覆盖Video.js无法播放媒体源时显示的默认信息。
           controlBar: {

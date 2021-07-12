@@ -1,10 +1,13 @@
 <template>
   <div class="dash">
 
-    <div class="dashRow">
-        <video-player class="video-player vjs-custom-skin"></video-player>
-    </div>
+<!--    <div class="dashRow">-->
+<!--        <video-player class="video-player vjs-custom-skin"></video-player>-->
+<!--    </div>-->
 
+    <div class="rtmpVideo">
+      <FlvVideo class="videostream"></FlvVideo>
+    </div>
     <div class="dashRow">
       <cool-clock class="dashRowClock"></cool-clock>
     </div>
@@ -23,8 +26,10 @@ import BarChart from './components/BarChart.vue'
 import SwiperImg from './components/SwiperImg.vue'
 import TodoList from './components/TodoList.vue'
 import CoolClock from './components/CoolClock.vue'
+import FlvVideo from './components/FlvVideo.vue'
 import VideoPlayer from './components/VideoPlayer.vue'
 import VideoPlayer1 from './components/VideoPlayer1.vue'
+import RtmpVideo from './components/RtmpVideo.vue'
 
 @Component({
   components: {
@@ -35,8 +40,10 @@ import VideoPlayer1 from './components/VideoPlayer1.vue'
     // SwiperImg,
     // TodoList,
     CoolClock,
-    VideoPlayer,
-    VideoPlayer1
+    FlvVideo
+    // VideoPlayer,
+    // VideoPlayer1,
+    // RtmpVideo
   }
 })
 export default class DashBoard extends Vue {
@@ -45,6 +52,12 @@ export default class DashBoard extends Vue {
 </script>
 
 <style lang="less" scoped>
+.videostream{
+  background: #f0f0f0;
+  min-height: 900px;
+  max-height: 2000px;
+  //padding: 90px 20px 30px 320px;
+}
 .dash {
   width: 100%;
   // border: 2px solid blue;
