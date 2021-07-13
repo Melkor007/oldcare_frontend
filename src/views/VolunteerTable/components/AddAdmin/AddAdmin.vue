@@ -10,21 +10,32 @@
           <el-radio label="女">女</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="地址" :label-width="formLabelWidth">
-        <el-cascader
-          placeholder="请选择地址"
-          v-model="form.addr"
-          :options="options"
-          class="formItem"      
-          filterable>
-        </el-cascader>
+      <el-form-item label="电话号码" :label-width="formLabelWidth">
+        <el-input v-model="form.phone" autocomplete="off" class="formItem" placeholder="请输入电话号码"></el-input>
       </el-form-item>
-      <el-form-item label="email" :label-width="formLabelWidth">
-        <el-input v-model="form.email" autocomplete="off" class="formItem" placeholder="请输入邮箱"></el-input>
+      <!--      <el-form-item label="地址" :label-width="formLabelWidth">-->
+      <!--        <el-cascader-->
+      <!--          placeholder="请选择地址"-->
+      <!--          v-model="form.addr"-->
+      <!--          :options="options"-->
+      <!--          class="formItem"-->
+      <!--          filterable>-->
+      <!--        </el-cascader>-->
+      <!--      </el-form-item>-->
+      <el-form-item label="员工卡号" :label-width="formLabelWidth">
+        <el-input v-model="form.idCard" autocomplete="off" class="formItem" placeholder="请输入员工卡号"></el-input>
       </el-form-item>
-      <el-form-item label="创建时间" :label-width="formLabelWidth">
+      <el-form-item label="入职日期" :label-width="formLabelWidth">
         <el-date-picker
-          v-model="form.buildtime"
+          v-model="form.date"
+          type="date"
+          placeholder="选择日期"
+          class="formItem">
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="离职日期" :label-width="formLabelWidth">
+        <el-date-picker
+          v-model="form.date"
           type="date"
           placeholder="选择日期"
           class="formItem">
@@ -57,7 +68,9 @@ export default class AddAdmin extends Vue implements Add{
     sex: '',
     addr: '',
     email: '',
-    buildtime: ''
+    buildtime: '',
+    idCard: '',
+    date: ''
   }
   formLabelWidth = '120px'
 

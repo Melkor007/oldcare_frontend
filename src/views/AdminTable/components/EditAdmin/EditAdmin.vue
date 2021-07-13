@@ -7,8 +7,14 @@
       <el-form-item label="名称" :label-width="formLabelWidth">
         <el-input v-model="form.name" autocomplete="off" class="formItem" placeholder="请输入账号名称"></el-input>
       </el-form-item>
-      <el-form-item label="email" :label-width="formLabelWidth">
-        <el-input v-model="form.email" autocomplete="off" class="formItem" placeholder="请输入邮箱"></el-input>
+      <el-form-item label="电话号码" :label-width="formLabelWidth">
+        <el-input v-model="form.phone" autocomplete="off" class="formItem" placeholder="请输入电话号码"></el-input>
+      </el-form-item>
+      <el-form-item label="房号" :label-width="formLabelWidth">
+        <el-input v-model="form.name" autocomplete="off" class="formItem" placeholder="请输入房号"></el-input>
+      </el-form-item>
+      <el-form-item label="健康状况" :label-width="formLabelWidth">
+        <el-input v-model="form.name" autocomplete="off" class="formItem" placeholder="请输入健康状况"></el-input>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
@@ -67,7 +73,7 @@ export default class AddAdmin extends Vue implements Edit{
         })
       }
       this.$emit('flushList')  // 修改后刷新数据
-    }) 
+    })
   }
 }
 </script>
