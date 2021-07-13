@@ -17,6 +17,11 @@
       <el-form-item>
         <el-button class="loginButton" type="primary" @click="submitForm('ruleForm')" :loading="logining">登录</el-button>
       </el-form-item>
+      <el-form-item>
+        <el-button class="loginButton" @click="test">
+          aaa
+        </el-button>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -47,6 +52,17 @@ export default {
   },
 
   methods: {
+    test() {
+      alert("testing!")
+      let params = {
+        username:'liuyufan',
+        password:'123456'
+      }
+      service.testo(params).then(res=>{
+        console.log(res)
+      })
+    },
+
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {

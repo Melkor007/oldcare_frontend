@@ -49,6 +49,7 @@ import RtmpVideo from './components/RtmpVideo.vue'
 export default class DashBoard extends Vue {
   chartLine: any
 }
+
 </script>
 
 <style lang="less" scoped>

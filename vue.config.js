@@ -38,7 +38,15 @@ module.exports = {
     port: 8080,
     https: false,
     hotOnly: false,
-    proxy: null, // 设置代理
+    proxy:  {
+      '/api': {
+        // 目标 API 地址
+        target: 'http://192.168.43.119:8000/',
+        // 如果要代理 websockets
+        // ws: false,
+        changeOrigin: true, // 允许websockets跨域
+      }
+    }, // 设置代理
     before: app => {}
   },
   // 第三方插件配置

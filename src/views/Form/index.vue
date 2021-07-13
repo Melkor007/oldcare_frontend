@@ -1,5 +1,6 @@
 <template>
   <div class="form">
+    <button @click="test"></button>
     <form-demo @getFormData='getFormData'></form-demo>
     <table-data :tableData='tableData'></table-data>
   </div>
@@ -24,6 +25,17 @@ export default {
   methods: {
     getFormData(val) {
       this.tableData.push(val)
+    },
+    test() {
+      alert("request sent!")
+      fetch('http://192.168.43.119:8000/api/web/login/',{
+        method:'post',
+        body:JSON.stringify({
+          username:'liuyufan',
+          password:'123456'
+        })
+      }).then(res => res.json())
+        .then(data => console.log(data))
     }
   }
 }
