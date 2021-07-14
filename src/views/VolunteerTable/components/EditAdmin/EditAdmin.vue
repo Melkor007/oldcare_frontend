@@ -56,7 +56,7 @@ export default class AddAdmin extends Vue implements Edit{
   public editAdmin() {
     let params = this.form
     this.loading = true
-    service.putAdminList(params).then(res => {
+    service.putOldList(params).then(res => {
       this.loading = false
       this.dialogFormVisible = false
       let { code, msg } = res.data

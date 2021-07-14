@@ -9,44 +9,28 @@ const baseUrl = '/api/web/'
 export default  {
   testo: async (params: Object) => {
     return await service.post(`${baseUrl}login/`, qs.stringify(params)).then(res => res).catch(err => err)
-  },
+  },//post
   testt: async () => {
     return await service.get(`${baseUrl}login/`, qs.stringify()).then(res => res).catch(err => err)
-  },
+  },//get
   login: async (params: Object) => {
-    return await axios.get(`${baseUrl}login`, {params}).then(res => res).catch(err => err)
+    return await axios.get(`${baseUrl}login/`, {params}).then(res => res).catch(err => err)
   },
 
   getOldList: async () => {
-    return await service.get(`${baseUrl}oldpersons`, qs.stringify()).then(res => res.data).catch(err => err)
+    return await service.get(`${baseUrl}oldpersons/`, qs.stringify()).then(res => res.data).catch(err => err)
   },
 
-  postAdminList: async (params: any) => {
-    return await axios.post(`${baseUrl}admin`, { params }).then(res => res).catch(err => err)
+  postOldList: async (params: any) => {
+    return await axios.post(`${baseUrl}oldpersons/`, qs.stringify(params)).then(res => res).catch(err => err)
   },
 
-  putAdminList: async (params: any) => {
+  putOldList: async (params: any) => {
     return await axios.put(`${baseUrl}admin`, { params }).then(res => res).catch(err => err)
   },
 
-  deleteAdminList: async (params: any) => {
+  deleteOldList: async (params: any) => {
     return await axios.delete(`${baseUrl}admin`, { params }).then(res => res).catch(err => err)
-  },
-
-  getPersonnelOldList: async (params: any) => {
-    return await axios.get(`${baseUrl}PersonnelOld`, {params}).then(res => res.data).catch(err => err)
-  },
-
-  postPersonnelOldList: async (params: any) => {
-    return await axios.post(`${baseUrl}PersonnelOld`, { params }).then(res => res).catch(err => err)
-  },
-
-  putPersonnelOldList: async (params: any) => {
-    return await axios.put(`${baseUrl}PersonnelOld`, { params }).then(res => res).catch(err => err)
-  },
-
-  deletePersonnelOldList: async (params: any) => {
-    return await axios.delete(`${baseUrl}PersonnelOld`, { params }).then(res => res).catch(err => err)
   },
 
   getStaffList: async (params: any) => {
