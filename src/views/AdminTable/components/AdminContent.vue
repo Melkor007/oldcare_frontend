@@ -29,7 +29,20 @@
               <span>{{ props.row.healthState }}</span>
             </el-form-item>
             <el-form-item label="图像">
-              <span><img :src="props.row.image" title="图像示例"></span>
+              <span>
+<!--                <img :src="props.row.image" title="图像示例">-->
+                 <el-upload
+                   action="avatarUpload"
+                   :auto-upload = 'false'
+                   list-type="picture-card"
+                   :on-preview="selectPicUpload"
+                   :on-remove="handleRemove"
+                   :limit= '1'
+                   :on-change="fail">
+                    <img v-if="imageUrl" width="200px" height="200px" :src="imageUrl" class="avatar" />
+                    <i v-else class="el-icon-plus"></i>
+                 </el-upload>
+              </span>
             </el-form-item>
           </el-form>
         </template>
@@ -83,6 +96,30 @@
     <edit-admin :editVisible.sync="editVisible" :row="row" @flushList='flushList'></edit-admin>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      valueUrl: ''
+    }
+  },
+  methods: {
+    selectPicUpload(obj) {
+      let fd = new FormData(); //参数的格式是formData格式的
+      fd.append("file", obj.file); //参数
+      this.$axios.postFile(this.$api.upload_photo, fd).then(res => {
+        this.imageUrl = res.data.url;
+        // this.backgroundUrl = res.data.backgroundUrl;
+      });
+    },
+    handleRemove(file) {
+      this.imageUrl = "";
+      // this.backgroundUrl = "";
+    },
+  },
+}
+</script>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
@@ -158,5 +195,29 @@ export default class AdminContent extends Vue{
 .el-table {
   width: 100%;
   text-align: center
+}
+
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409EFF;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 240px;
+  height: 240px;
+  display: block;
 }
 </style>

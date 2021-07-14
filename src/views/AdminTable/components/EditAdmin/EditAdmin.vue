@@ -16,6 +16,7 @@
       <el-form-item label="健康状况" :label-width="formLabelWidth">
         <el-input v-model="form.name" autocomplete="off" class="formItem" placeholder="请输入健康状况"></el-input>
       </el-form-item>
+
     </el-form>
     <div slot="footer" class="dialog-footer">
       <el-button size="medium" @click="dialogFormVisible = false" >取 消</el-button>

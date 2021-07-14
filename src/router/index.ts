@@ -127,6 +127,7 @@ const asyncRoutes = [
     name: '',
     iconCls: 'el-icon-coin',
     leaf: true,
+    hidden: true,
     children: [
       {
         name: '事件记录',

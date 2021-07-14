@@ -29,6 +29,8 @@ export default {
   },
 
   methods: {
+
+
     // 接收从Head传来的数据（所有交互的数据都会传回父级，在由父级下发）
     getHeadData(data, listLoading = false) {
       let result = data.result
@@ -55,6 +57,7 @@ export default {
         this.$refs.child.getAdmin()
       })
     }
+
   },
 }
 </script>

@@ -63,7 +63,7 @@ export default class LineChart extends Vue{
           textStyle: {
             color: '#90979c'
           },
-          data: ['female', 'male', 'average']
+          data: ['volunteer', 'staff', 'elder']
         },
         calculable: true,
         xAxis: [{
@@ -124,7 +124,8 @@ export default class LineChart extends Vue{
 
           },
           textStyle: {
-            color: '#fff' },
+            color: '#fff'
+          },
           borderColor: '#90979c'
 
         }, {

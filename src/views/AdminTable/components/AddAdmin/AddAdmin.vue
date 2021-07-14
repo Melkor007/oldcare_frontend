@@ -85,6 +85,8 @@ export default class AddAdmin extends Vue implements Add{
     return this.visible
   }
 
+
+
   set dialogFormVisible(val) {
     !val && this.$emit('update:visible', false)  // 更新父组件状态，注意.sync修饰符
   }
@@ -103,11 +105,25 @@ export default class AddAdmin extends Vue implements Add{
     })
   }
 }
+
+
 </script>
 
 <style lang="less" scoped>
 .formItem {
   width: 200px;
   float: left;
+}
+
+.pic_list_box {
+  display: flex;
+}
+.upload_btn {
+  width: 100px;
+  height: 100px;
+  padding-left: 15px;
+}
+.pic_list {
+  display: flex;
 }
 </style>
