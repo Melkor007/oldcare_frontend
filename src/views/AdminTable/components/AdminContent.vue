@@ -67,7 +67,7 @@
       </el-table-column>
       <el-table-column
         label="健康情况"
-        prop="health_state"
+        prop="healthState"
         align="center"
         min-width="300">
       </el-table-column>

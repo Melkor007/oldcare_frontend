@@ -17,8 +17,8 @@ export default class downloadMixins extends Vue {
   public handleDownloadExcel() {
     this.downloadLoading = true
     import('@/vendor/Export2Excel').then(excel => {
-      const tHeader = ['id', 'name', 'sex', 'addr', 'email']
-      const filterVal = ['id', 'name', 'sex', 'addr', 'email']
+      const tHeader = ['id', 'name', 'sex', 'phone', 'roomNumber', 'healthState']
+      const filterVal = ['id', 'name', 'sex', 'phone', 'roomNumber', 'healthState']
       const list = this.downloadData
       const data = this.formatJson(filterVal, list)
       excel.export_json_to_excel({
@@ -35,8 +35,8 @@ export default class downloadMixins extends Vue {
   public handleDownloadZip() {
     this.downloadLoading1 = true
     import('@/vendor/Export2Zip').then(zip => {
-      const tHeader = ['id', 'name', 'sex', 'addr', 'email']
-      const filterVal = ['id', 'name', 'sex', 'addr', 'email']
+      const tHeader = ['id', 'name', 'sex', 'phone', 'roomNumber', 'healthState']
+      const filterVal = ['id', 'name', 'sex', 'phone', 'roomNumber', 'healthState']
       const list = this.downloadData
       const data = this.formatJson(filterVal, list)
       zip.export_txt_to_zip(tHeader, data, this.filename, this.filename)

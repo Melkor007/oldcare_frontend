@@ -55,7 +55,7 @@
       </el-table-column>
       <el-table-column
         label="员工卡号"
-        prop="id_card"
+        prop="idCard"
         align="center"
         min-width="300">
       </el-table-column>
