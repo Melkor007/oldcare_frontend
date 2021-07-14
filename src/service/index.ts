@@ -22,7 +22,7 @@ export default  {
   },
 
   postOldList: async (params: any) => {
-    return await axios.post(`${baseUrl}oldpersons/`, qs.stringify(params)).then(res => res).catch(err => err)
+    return await axios.post(`${baseUrl}api/oldpersons/`, qs.stringify(params)).then(res => res).catch(err => err)
   },
 
   putOldList: async (params: any) => {
@@ -33,12 +33,12 @@ export default  {
     return await axios.delete(`${baseUrl}admin`, { params }).then(res => res).catch(err => err)
   },
 
-  getStaffList: async (params: any) => {
-    return await axios.get(`${baseUrl}Staff`, {params}).then(res => res.data).catch(err => err)
+  getStaffList: async () => {
+    return await service.get(`${baseUrl}api/employees/`, qs.stringify()).then(res => res.data).catch(err => err)
   },
 
   postStaffList: async (params: any) => {
-    return await axios.post(`${baseUrl}Staff`, { params }).then(res => res).catch(err => err)
+    return await service.post(`${baseUrl}api/employees/`, qs.stringify(params)).then(res => res).catch(err => err)
   },
 
   putStaffList: async (params: any) => {
