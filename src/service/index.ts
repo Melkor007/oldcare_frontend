@@ -49,8 +49,8 @@ export default  {
     return await axios.delete(`${baseUrl}Staff`, { params }).then(res => res).catch(err => err)
   },
 
-  getVolunteerList: async (params: any) => {
-    return await axios.get(`${baseUrl}Volunteer`, {params}).then(res => res.data).catch(err => err)
+  getVolunteerList: async () => {
+    return await service.get(`${baseUrl}api/volunteers`, qs.stringify()).then(res => res.data).catch(err => err)
   },
 
   postVolunteerList: async (params: any) => {
