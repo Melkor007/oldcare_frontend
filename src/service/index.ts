@@ -4,21 +4,21 @@ import service from '../util/request'
 import axios from 'axios'
 
 const qs = require('qs')
-const baseUrl = '/'
+const baseUrl = '/api/web/'
 
 export default  {
   testo: async (params: Object) => {
-    return await service.post(`${baseUrl}api/web/login/`, qs.stringify(params)).then(res => res).catch(err => err)
+    return await service.post(`${baseUrl}login/`, qs.stringify(params)).then(res => res).catch(err => err)
   },
   testt: async () => {
-    return await service.get(`${baseUrl}api/web/login/`, qs.stringify()).then(res => res).catch(err => err)
+    return await service.get(`${baseUrl}login/`, qs.stringify()).then(res => res).catch(err => err)
   },
   login: async (params: Object) => {
     return await axios.get(`${baseUrl}login`, {params}).then(res => res).catch(err => err)
   },
 
-  getAdminList: async (params: any) => {
-    return await axios.get(`${baseUrl}admin`, {params}).then(res => res.data).catch(err => err)
+  getOldList: async () => {
+    return await service.get(`${baseUrl}oldpersons`, qs.stringify()).then(res => res.data).catch(err => err)
   },
 
   postAdminList: async (params: any) => {

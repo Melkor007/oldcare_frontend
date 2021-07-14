@@ -41,12 +41,13 @@ export default class AdminHead extends Vue implements Admin{
   }
 
   visible = false  // 添加对话框是否可见
-  
+
   // 请求table数据
   public getAdmin() {
-    let params = Object.assign({}, this.form, {page: this.page })
-    service.getAdminList(params).then(res => {
-      this.downloadData = res.result['admins']
+    // let params = Object.assign({}, this.form, {page: this.page })
+    service.getOldList().then(res => {
+      console.log(res)
+      this.downloadData = res
       this.$emit('getHeadData', res, false)
     })
   }
