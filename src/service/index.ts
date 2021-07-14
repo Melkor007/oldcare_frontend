@@ -7,8 +7,11 @@ const qs = require('qs')
 const baseUrl = '/'
 
 export default  {
-  testo: async (params: any) => {
-    return await axios.post('/api/web/login/', {params}).then(res => res).catch(err => err)
+  testo: async (params: Object) => {
+    return await service.post(`${baseUrl}api/web/login/`, qs.stringify(params)).then(res => res).catch(err => err)
+  },
+  testt: async () => {
+    return await service.get(`${baseUrl}api/web/login/`, qs.stringify()).then(res => res).catch(err => err)
   },
   login: async (params: Object) => {
     return await axios.get(`${baseUrl}login`, {params}).then(res => res).catch(err => err)

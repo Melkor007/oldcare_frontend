@@ -54,10 +54,14 @@ export default {
   methods: {
     test() {
       alert("testing!")
-      let params = {
+      // service.testt().then(res =>{
+      //   console.log(res)
+      // })
+      let data = {
         username:'liuyufan',
         password:'123456'
       }
+      let params = Object.assign({},data)
       service.testo(params).then(res=>{
         console.log(res)
       })
