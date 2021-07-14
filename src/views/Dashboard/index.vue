@@ -16,7 +16,7 @@
         <intrusion-event ref="intrusion"></intrusion-event>
       </div>
     </div>
-    <web-socket @getEvents="getEvents"></web-socket>
+<!--    <web-socket @getEvents="getEvents"></web-socket>-->
     <div class="dashBlock"></div>
   </div>
 </template>
@@ -60,7 +60,7 @@ export default{
                 tag: res[i].event_type === 0 ? '微笑' : '交互',
                 img_path: res[i].img_path,
               };
-              elderEventData.push(tmp);
+              // elderEventData.push(tmp);
             }else{
               let tmp={
                 ID: res[i].id,
@@ -70,11 +70,11 @@ export default{
                 tag: res[i].event_type === 2 ? '陌生人来访' : (res[i].event_type === 3 ? '摔倒' : '禁止区域入侵'),
                 img_path: res[i].img_path,
               };
-              intrusionEventData.push(tmp);
+              // intrusionEventData.push(tmp);
             }
           }
-          this.$refs.elder.setData(elderEventData);
-          this.$refs.intrusion.setData(intrusionEventData);
+          // this.$refs.elder.setData(elderEventData);
+          // this.$refs.intrusion.setData(intrusionEventData);
         })
       },
     }

@@ -33,8 +33,7 @@ export default {
 
     // 接收从Head传来的数据（所有交互的数据都会传回父级，在由父级下发）
     getHeadData(data, listLoading = false) {
-      let result = data.result
-      this.tableData = result.admins
+      this.tableData = data
       this.total = result.total
       this.listLoading = false
 
