@@ -12,11 +12,14 @@
             return {
                 websock: null,
             }
-        },created() {
+        },
+        created() {
             this.initWebSocket();
-        },destroyed() {
+        },
+        destroyed() {
             this.websock.close() //离开路由之后断开websocket连接
-        },methods: {
+        },
+        methods: {
             initWebSocket(){ //初始化weosocket
                 const wsuri = "ws://192.144.229.49:8000/api/websocket/link";
                 this.websock = new WebSocket(wsuri);

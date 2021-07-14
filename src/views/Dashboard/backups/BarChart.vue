@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import util from '@/util/index'
+import util from '@/util'
 import myMinxis from '../mixins/resize'
 declare let echarts: any;
 

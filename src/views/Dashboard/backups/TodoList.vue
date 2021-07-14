@@ -7,7 +7,7 @@
         v-model="newTodo"
         @keyup.enter="addTodo">
       <button class="new-todo-button"
-        @click="addTodo"  
+        @click="addTodo"
         v-show="newTodo.length > 0"
       ></button>
     </header>
@@ -185,5 +185,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import './todo.scss';
+  @import 'todo';
 </style>
