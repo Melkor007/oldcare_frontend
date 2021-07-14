@@ -18,7 +18,7 @@ export default  {
   },
 
   getOldList: async () => {
-    return await service.get(`${baseUrl}api/oldpersons/`, qs.stringify()).then(res => res.data).catch(err => err)
+    return await service.get(`${baseUrl}api/oldpersons/`, qs.stringify()).then(res => res).catch(err => err)
   },
 
   postOldList: async (params: any) => {

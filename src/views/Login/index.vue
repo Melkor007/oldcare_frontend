@@ -17,11 +17,11 @@
       <el-form-item>
         <el-button class="loginButton" type="primary" @click="submitForm('ruleForm')" :loading="logining">登录</el-button>
       </el-form-item>
-<!--      <el-form-item>-->
-<!--        <el-button class="loginButton" @click="test">-->
-<!--          aaa-->
-<!--        </el-button>-->
-<!--      </el-form-item>-->
+      <el-form-item>
+        <el-button class="loginButton" @click="test">
+          aaa
+        </el-button>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -54,17 +54,17 @@ export default {
   methods: {
     test() {
       alert("testing!")
-      // service.testt().then(res =>{
-      //   console.log(res)
-      // })
-      let data = {
-        username:'liuyufan',
-        password:'123456'
-      }
-      let params = Object.assign({},data)
-      service.testo(params).then(res=>{
+      service.testt().then(res =>{
         console.log(res)
       })
+      // let data = {
+      //   username:'liuyufan',
+      //   password:'123456'
+      // }
+      // let params = Object.assign({},data)
+      // service.testo(params).then(res=>{
+      //   console.log(res)
+      // })
     },
 
     submitForm(formName) {
