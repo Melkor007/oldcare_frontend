@@ -37,15 +37,15 @@ service.interceptors.request.use((config: AxiosRequestConfig) => {
 });
 
 service.interceptors.response.use((response: AxiosResponse) => {
-  console.log(response)
-  if (response.status !== 200) {
-    Message({
-      message: `请求错误，${String(response.status)}`,
-      type: 'error',
-      duration: 3 * 1000
-    });
-    return { code: 100 }
-  } else{
+  // console.log(response)
+  // if (response.status !== 200) {
+  //   Message({
+  //     message: `请求错误，${String(response.status)}`,
+  //     type: 'error',
+  //     duration: 3 * 1000
+  //   });
+  //   return { code: 100 }
+  // } else{
     let res = response.data;
     // let { code, msg, token = null } = res;
     // if (token) {
@@ -69,7 +69,7 @@ service.interceptors.response.use((response: AxiosResponse) => {
     //   });
     // }
     return res
-  }
+  // }
 }, (err: any) => {
   Message({
     message: err,

@@ -22,15 +22,15 @@ export default  {
   },
 
   postOldList: async (params: any) => {
-    return await axios.post(`${baseUrl}api/oldpersons/`, qs.stringify(params)).then(res => res).catch(err => err)
+    return await service.post(`${baseUrl}api/oldpersons/`, qs.stringify(params)).then(res => res).catch(err => err)
   },
 
-  putOldList: async (params: any) => {
-    return await axios.put(`${baseUrl}admin`, { params }).then(res => res).catch(err => err)
+  putOldList: async (params: any,id) => {
+    return await service.put(`${baseUrl}api/oldpersons/${id}/`, qs.stringify(params)).then(res => res).catch(err => err)
   },
 
-  deleteOldList: async (params: any) => {
-    return await axios.delete(`${baseUrl}admin`, { params }).then(res => res).catch(err => err)
+  deleteOldList: async (id: any) => {
+    return await service.delete(`${baseUrl}api/oldpersons/${id}/`, qs.stringify()).then(res => res).catch(err => err)
   },
 
   getStaffList: async () => {
@@ -42,26 +42,26 @@ export default  {
   },
 
   putStaffList: async (params: any) => {
-    return await axios.put(`${baseUrl}Staff`, { params }).then(res => res).catch(err => err)
+    return await service.put(`${baseUrl}Staff/`, { params }).then(res => res).catch(err => err)
   },
 
   deleteStaffList: async (params: any) => {
-    return await axios.delete(`${baseUrl}Staff`, { params }).then(res => res).catch(err => err)
+    return await service.delete(`${baseUrl}Staff/`, { params }).then(res => res).catch(err => err)
   },
 
   getVolunteerList: async () => {
-    return await service.get(`${baseUrl}api/volunteers`, qs.stringify()).then(res => res.data).catch(err => err)
+    return await service.get(`${baseUrl}api/volunteers/`, qs.stringify()).then(res => res.data).catch(err => err)
   },
 
   postVolunteerList: async (params: any) => {
-    return await axios.post(`${baseUrl}Volunteer`, { params }).then(res => res).catch(err => err)
+    return await service.post(`${baseUrl}Volunteer/`, { params }).then(res => res).catch(err => err)
   },
 
   putVolunteerList: async (params: any) => {
-    return await axios.put(`${baseUrl}Volunteer`, { params }).then(res => res).catch(err => err)
+    return await service.put(`${baseUrl}Volunteer/`, { params }).then(res => res).catch(err => err)
   },
 
   deleteVolunteerList: async (params: any) => {
-    return await axios.delete(`${baseUrl}Volunteer`, { params }).then(res => res).catch(err => err)
+    return await service.delete(`${baseUrl}Volunteer/`, { params }).then(res => res).catch(err => err)
   }
 }

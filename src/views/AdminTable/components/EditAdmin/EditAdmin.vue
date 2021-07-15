@@ -5,16 +5,16 @@
         <el-input v-model="form.id" autocomplete="off" class="formItem" placeholder="请输入账号id" disabled></el-input>
       </el-form-item>
       <el-form-item label="名称" :label-width="formLabelWidth">
-        <el-input v-model="form.name" autocomplete="off" class="formItem" placeholder="请输入账号名称"></el-input>
+        <el-input v-model="form.username" autocomplete="off" class="formItem" placeholder="请输入账号名称"></el-input>
       </el-form-item>
       <el-form-item label="电话号码" :label-width="formLabelWidth">
         <el-input v-model="form.phone" autocomplete="off" class="formItem" placeholder="请输入电话号码"></el-input>
       </el-form-item>
       <el-form-item label="房号" :label-width="formLabelWidth">
-        <el-input v-model="form.name" autocomplete="off" class="formItem" placeholder="请输入房号"></el-input>
+        <el-input v-model="form.room_number" autocomplete="off" class="formItem" placeholder="请输入房号"></el-input>
       </el-form-item>
       <el-form-item label="健康状况" :label-width="formLabelWidth">
-        <el-input v-model="form.name" autocomplete="off" class="formItem" placeholder="请输入健康状况"></el-input>
+        <el-input v-model="form.health_state" autocomplete="off" class="formItem" placeholder="请输入健康状况"></el-input>
       </el-form-item>
 
     </el-form>
@@ -28,6 +28,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import service from '@/service/index'
+import {Message} from "element-ui";
 
 interface Edit {
   form: Object
@@ -62,18 +63,17 @@ export default class AddAdmin extends Vue implements Edit{
   // 编辑数据并修改
   public editAdmin() {
     let params = this.form
+    let id = this.row.id
     this.loading = true
-    service.putOldList(params).then(res => {
+    service.putOldList(params,id).then(res => {
       this.loading = false
       this.dialogFormVisible = false
-      let { code, msg } = res.data
-      if (code == 0) {
-        this.$message({
-          message: msg,
-          type: 'success'
-        })
-      }
       this.$emit('flushList')  // 修改后刷新数据
+      Message({
+        message: `修改成功`,
+        type: 'success',
+        duration: 3 * 1000
+      });
     })
   }
 }
