@@ -16,45 +16,54 @@ export default class LineChart extends Vue{
   @Prop() private width !: String
   @Prop() private height !: String
 
-  oldManData: Array<any> = []
+  oldManData:  Array<any> = []
   ageData: Array<any> = [0,0,0,0,0,0,0,0]
 
   public getAge() {
+    // this.ageData = [0,0,0,0,0,0,0,0]
     service.getOldList().then(res => {
       console.log(res)
       this.oldManData = res
+
+      for(let i:number = 0; i < this.oldManData.length; i++){
+        if(this.oldManData[i].age > 20 && this.oldManData[i].age <= 30){
+          this.ageData[0] = this.ageData[0] + 1
+        }
+        else if(this.oldManData[i].age > 30 && this.oldManData[i].age <= 40){
+          this.ageData[1] = this.ageData[1] + 1
+        }
+        else if(this.oldManData[i].age > 40 && this.oldManData[i].age <= 50){
+          this.ageData[2] = this.ageData[2] + 1
+        }
+        else if(this.oldManData[i].age > 50 && this.oldManData[i].age <= 60){
+          this.ageData[3] = this.ageData[3] + 1
+          console.log('222')
+        }
+        else if(this.oldManData[i].age > 60 && this.oldManData[i].age <= 70){
+          this.ageData[4] = this.ageData[4] + 1
+        }
+        else if(this.oldManData[i].age > 70 && this.oldManData[i].age <= 80){
+          this.ageData[5] = this.ageData[5] + 1
+        }
+        else if(this.oldManData[i].age > 80 && this.oldManData[i].age <= 90){
+          this.ageData[6] = this.ageData[6] + 1
+        }
+        else if(this.oldManData[i].age > 90 && this.oldManData[i].age <= 100){
+          this.ageData[7] = this.ageData[7] + 1
+        }
+        else{
+          console.log('Lmfao')
+        }
+      }
+
+      this.initChart()
     })
-    for(let i:number = 0; i < this.oldManData.length; i++){
-      if(this.oldManData[i].age > 20 && this.oldManData[i].age <= 30){
-        this.ageData[0]++
-      }
-      else if(this.oldManData[i].age > 30 && this.oldManData[i].age <= 40){
-        this.ageData[1]++
-      }
-      else if(this.oldManData[i].age > 40 && this.oldManData[i].age <= 50){
-        this.ageData[2]++
-      }
-      else if(this.oldManData[i].age > 50 && this.oldManData[i].age <= 60){
-        this.ageData[3]++
-      }
-      else if(this.oldManData[i].age > 60 && this.oldManData[i].age <= 70){
-        this.ageData[4]++
-      }
-      else if(this.oldManData[i].age > 70 && this.oldManData[i].age <= 80){
-        this.ageData[5]++
-      }
-      else if(this.oldManData[i].age > 80 && this.oldManData[i].age <= 90){
-        this.ageData[6]++
-      }
-      else if(this.oldManData[i].age > 90 && this.oldManData[i].age <= 100){
-        this.ageData[7]++
-      }
-    }
+    return this.ageData
   }
 
   public initChart() {
     this.chart = echarts.init(document.getElementById(this.id))
-    this.getAge()
+
     const xData = (function() {
       const data: Array<any> = []
       for (let i: number = 20; i < 100; i=i+10) {
@@ -65,7 +74,7 @@ export default class LineChart extends Vue{
     this.chart.setOption({
         backgroundColor: '#344b58',
         title: {
-          text: '老人年龄分布',
+          text: '年龄分布',
           x: '20',
           top: '20',
           textStyle: {
@@ -255,7 +264,6 @@ export default class LineChart extends Vue{
               }
             },
             data: this.ageData
-
           }
         ]
       })
@@ -263,7 +271,7 @@ export default class LineChart extends Vue{
 
 
   private mounted () {
-    this.initChart()
+    this.getAge()
   }
 
   private beforeDestroy() {

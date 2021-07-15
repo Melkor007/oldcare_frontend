@@ -5,6 +5,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import myMixins from '../mixins/resize'
+import service from "@/service/index";
 declare let echarts: any;
 
 @Component({
@@ -15,12 +16,55 @@ export default class LineChart extends Vue{
   @Prop() private width !: String
   @Prop() private height !: String
 
-  happyData: Array<any> = [0,1,0,3,0,5,5]
-  angerData: Array<any> = [0,0,2,0,4,0,1]
-  surprisedData: Array<any> = [0,4,0,0,2,0,0]
-  sadnessData: Array<any> = [0,0,0,0,1,0,2]
+  eventData: Array<any> = []
+  happyData: Array<any> = [0,0,0,0,0,0,0]
+  angerData: Array<any> = [0,0,0,0,0,0,0]
+  surprisedData: Array<any> = [0,0,0,0,0,0,0]
+  sadnessData: Array<any> = [0,0,0,0,0,0,0]
+
+  public getData(){
+    service.getEventList().then(res => {
+      console.log(res)
+      this.eventData = res
 
 
+      for(let i:number = 0; i < this.eventData.length; i++){
+        // alert('Lmfao')
+        if(this.eventData[i].event_type == 5){
+          let j = new Date().getDay() - new Date(this.eventData[i].event_date).getDay();
+          this.angerData[6-j]++
+        }
+        else if(this.eventData[i].event_type == 8){
+          let j = new Date().getDay() - new Date(this.eventData[i].event_date).getDay();
+          this.happyData[6-j]++
+        }
+        else if(this.eventData[i].event_type == 10){
+          let j = new Date().getDay() - new Date(this.eventData[i].event_date).getDay();
+          this.sadnessData[6-j]++
+        }
+        else if(this.eventData[i].event_type == 11){
+          let j = new Date().getDay() - new Date(this.eventData[i].event_date).getDay();
+          this.surprisedData[6-j]++
+        }
+      }
+      this.initChart()
+    })
+
+
+  }
+
+  public getHappyData(){
+    return this.happyData
+  }
+  public getAngerData(){
+    return this.angerData
+  }
+  public getSadnessData(){
+    return this.sadnessData
+  }
+  public getSurprisedData(){
+    return this.surprisedData
+  }
 
   public initChart() {
     this.chart = echarts.init(document.getElementById(this.id))
@@ -130,7 +174,7 @@ export default class LineChart extends Vue{
 
           }
         },
-        data: this.happyData
+        data: this.getHappyData()
       }, {
         name: 'Anger',
         type: 'line',
@@ -164,7 +208,7 @@ export default class LineChart extends Vue{
 
           }
         },
-        data: this.angerData
+        data: this.getAngerData()
       }, {
         name: 'Surprise',
         type: 'line',
@@ -197,7 +241,7 @@ export default class LineChart extends Vue{
             borderWidth: 12
           }
         },
-        data: this.surprisedData
+        data: this.getSurprisedData()
       },{
         name: 'Sadness',
         type: 'line',
@@ -231,13 +275,13 @@ export default class LineChart extends Vue{
 
           }
         },
-        data: this.sadnessData
+        data: this.getSadnessData()
       }]
     })
   }
 
   private mounted () {
-    this.initChart()
+    this.getData()
   }
 
   private beforeDestroy() {

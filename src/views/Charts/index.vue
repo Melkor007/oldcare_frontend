@@ -3,7 +3,7 @@
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick" class="chartTab">
       <el-tab-pane label="折线图" name="line" class="chartTabItem"></el-tab-pane>
       <el-tab-pane label="柱状图" name="bar" class="chartTabItem"></el-tab-pane>
-      <el-tab-pane label="饼图" name="pie" class="chartTabItem"></el-tab-pane>
+<!--      <el-tab-pane label="饼图" name="pie" class="chartTabItem"></el-tab-pane>-->
 <!--      <el-tab-pane label="仪表盘" name="dash" class="chartTabItem"></el-tab-pane>-->
 <!--      <el-tab-pane label="Gallery" name="gallery" class="chartTabItem"></el-tab-pane>-->
     </el-tabs>
@@ -11,7 +11,7 @@
     <div class="chartContent">
       <line-chart v-if="showLine" :id="'lineChart'" :width="'100%'" :height="'100%'"></line-chart>
       <bar-chart v-if="showBar" :id="'barChart'" :width="'100%'" :height="'100%'"></bar-chart>
-      <pie-chart v-if="showPie" :id="'pieChart'" :width="'100%'" :height="'100%'"></pie-chart>
+<!--      <pie-chart v-if="showPie" :id="'pieChart'" :width="'100%'" :height="'100%'"></pie-chart>-->
 <!--      <gallery-chart v-if="showGallery" :id="'galleryChart'" :width="'100%'" :height="'100%'"></gallery-chart>-->
 <!--      <dash-chart v-if="showDash" :id="'dashChart'" :width="'100%'" :height="'100%'"></dash-chart>-->
     </div>
@@ -46,10 +46,11 @@ export default {
     },
     showBar: function() {
       return this.activeName == 'bar'
-    },
-    showPie: function() {
-      return this.activeName == 'pie'
     }
+    // ,
+    // showPie: function() {
+    //   return this.activeName == 'pie'
+    // }
       // ,
     // showGallery: function() {
     //   return this.activeName == 'gallery'
