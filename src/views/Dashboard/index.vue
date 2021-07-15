@@ -16,7 +16,7 @@
         <intrusion-event ref="intrusion"></intrusion-event>
       </div>
     </div>
-<!--    <web-socket @getEvents="getEvents"></web-socket>-->
+    <web-socket @getEvents="getEvents"></web-socket>
     <div class="dashBlock"></div>
   </div>
 </template>
@@ -29,6 +29,7 @@ import WebSocket from './components/webSocket.vue'
 import OldEvent from './components/elderEventList.vue'
 import IntrusionEvent from './components/intrusionEventList.vue'
 import service from '@/service/index';
+import {Message} from "element-ui";
 
 export default{
   components:{
@@ -45,16 +46,26 @@ export default{
         }
   },
   methods:{
+      alertEvents(eventtype){
+        let type = this.mapping[eventtype]
+        Message({
+          message: '检测到'+type,
+          type: 'info',
+          duration: 3 * 1000
+        });
+      },
       getEvents() {
         let data = {};
         service.getEventList().then(res => {
           console.log(res);
           let len = res.length;
-          console.log(len);
+          // console.log(len);
+          let type = res[len-1].event_type
+          this.alertEvents(type)// 消息提醒
           let elderEventData = [];
           let intrusionEventData = [];
           for (let i = 0; i < len; i++) {
-            if(res[i].event_type===1 || res[i].event_type===2){
+            if(res[i].event_type===1 || res[i].event_type===8){
 
               let tmp={
                 ID: res[i].id,
@@ -63,8 +74,9 @@ export default{
                 name:'oldname',
                 address: res[i].event_location,
                 description: res[i].event_desc,
-                tag: res[i].event_type === 1 ? '微笑' : '交互',
+                tag: res[i].event_type === 1 ? '交互' : '微笑',
                 img_path: res[i].img_path,
+                oldID:res[i].oldperson
               };
               elderEventData.push(tmp);
             }else{
@@ -73,23 +85,22 @@ export default{
                 date: res[i].event_date,
                 address: res[i].event_location,
                 description: res[i].event_desc,
-                tag: res[i].event_type === 2 ? '陌生人来访' : (res[i].event_type === 3 ? '摔倒' : '禁区入侵'),
+                tag: res[i].event_type === 2 ? '摔倒' : (res[i].event_type === 3 ? '入侵' : '陌生人'),
                 img_path: res[i].img_path,
               };
-              // intrusionEventData.push(tmp);
+              intrusionEventData.push(tmp);
             }
           }
           for(let i=0;i<elderEventData.length;i++){
-            let oldpersonID = elderEventData[i].ID
+            let oldpersonID = elderEventData[i].oldID
             let oldname = ''
             service.getOld(oldpersonID).then(res => {
               oldname = res.username
               elderEventData[i].name=oldname
-              alert(oldname)
             })
           }
           this.$refs.elder.setData(elderEventData);
-          // this.$refs.intrusion.setData(intrusionEventData);
+          this.$refs.intrusion.setData(intrusionEventData);
         })
       },
   },

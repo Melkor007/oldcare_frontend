@@ -21,8 +21,15 @@
         },
         methods: {
             initWebSocket(){ //初始化weosocket
-                const wsuri = "ws://192.144.229.49:8000/api/websocket/link";
-                this.websock = new WebSocket(wsuri);
+                const wsuri = "ws://192.168.1.164:8000/ws/link/client/";
+                if ('WebSocket' in window) {
+                  this.websock = new WebSocket(wsuri);
+                // websocket = new WebSocket("ws://" + window.location.host + '/rtcp-web/createClusterWebSocket');
+              } else {
+                alert('Not support websocket')
+              }
+                // this.websock = new WebSocket(wsuri);
+                alert('lianjiechenggong')
                 console.log('链接成功')
                 this.websock.onmessage = this.websocketonmessage;
                 this.websock.onopen = this.websocketonopen;
@@ -34,12 +41,13 @@
                 this.websocketsend(JSON.stringify(actions));
             },
             websocketonerror(){//连接建立失败重连
+              alert('duankailianjie')
                 this.initWebSocket();
             },
             websocketonmessage(e){ //数据接收
                 // const redata = JSON.parse(e.data);
                 let res = e.data
-                if(res == 'refresh'){
+                if(res === 'refresh'){
                     this.refresh()
                 }
             },
