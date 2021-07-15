@@ -28,6 +28,15 @@
             <el-form-item label="健康状况">
               <span>{{ props.row.health_state }}</span>
             </el-form-item>
+            <el-form-item label="监护人">
+              <span>{{ props.row.firstguardian_name }}</span>
+            </el-form-item>
+            <el-form-item label="与监护人关系">
+              <span>{{ props.row.firstguardian_relationship }}</span>
+            </el-form-item>
+            <el-form-item label="监护人电话">
+              <span>{{ props.row.firstguardian_phone }}</span>
+            </el-form-item>
             <el-form-item label="图像">
               <span>
 <!--                <img :src="props.row.image" title="图像示例">-->
