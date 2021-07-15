@@ -17,16 +17,16 @@
               <span>{{ props.row.name }}</span>
             </el-form-item>
             <el-form-item label="性别">
-              <span>{{ props.row.sex }}</span>
+              <span>{{ props.row.gender }}</span>
             </el-form-item>
             <el-form-item label="手机号码">
               <span>{{ props.row.phone }}</span>
             </el-form-item>
             <el-form-item label="房号">
-              <span>{{ props.row.roomNumber }}</span>
+              <span>{{ props.row.room_number }}</span>
             </el-form-item>
             <el-form-item label="健康状况">
-              <span>{{ props.row.healthState }}</span>
+              <span>{{ props.row.health_state }}</span>
             </el-form-item>
             <el-form-item label="图像">
               <span>
@@ -56,13 +56,13 @@
       </el-table-column>
       <el-table-column
         label="名字"
-        prop="name"
+        prop="username"
         align="center"
         min-width="150">
       </el-table-column>
       <el-table-column
         label="性别"
-        prop="sex"
+        prop="gender"
         align="center"
         min-width="150">
       </el-table-column>
@@ -74,13 +74,13 @@
       </el-table-column>
       <el-table-column
         label="房号"
-        prop="roomNumber"
+        prop="room_number"
         align="center"
         min-width="150">
       </el-table-column>
       <el-table-column
         label="健康情况"
-        prop="healthState"
+        prop="health_state"
         align="center"
         min-width="300">
       </el-table-column>

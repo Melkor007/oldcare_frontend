@@ -24,7 +24,7 @@ export default {
       tableData: [],
       total: 0,
       page: 1,
-      listLoading: true,
+      listLoading: false,
     }
   },
 

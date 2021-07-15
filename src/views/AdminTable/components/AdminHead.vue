@@ -47,7 +47,6 @@ export default class AdminHead extends Vue implements Admin{
     // let params = Object.assign({}, this.form, {page: this.page })
     service.getOldList().then(res => {
       console.log(res)
-      alert('fuck')
       this.downloadData = res
       this.$emit('getHeadData', res, false)
     })
