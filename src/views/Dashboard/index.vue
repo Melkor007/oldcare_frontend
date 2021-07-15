@@ -12,6 +12,7 @@
     <!-- 空白占位，方便后续内容拓展，同时防止页面下方被hidden -->
     <div class="dashRow">
       <div class="dashBottom">
+        <flv-video1></flv-video1>
         <old-event ref="elder"></old-event>
         <intrusion-event ref="intrusion"></intrusion-event>
       </div>
@@ -25,6 +26,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import CoolClock from './components/CoolClock.vue'
 import FlvVideo from './components/FlvVideo.vue'
+import FlvVideo1 from './components/FlvVideo1.vue'
 import WebSocket from './components/webSocket.vue'
 import OldEvent from './components/elderEventList.vue'
 import IntrusionEvent from './components/intrusionEventList.vue'
@@ -35,6 +37,7 @@ export default{
   components:{
     CoolClock,
     FlvVideo,
+    FlvVideo1,
     WebSocket,
     OldEvent,
     IntrusionEvent
@@ -42,7 +45,7 @@ export default{
   $refs: {quickEntry: HTMLFormElement},
   data(){
       return{
-        mapping:['无(测试用)','微笑','义工交互','摔倒','禁区入侵','陌生人']
+        mapping:['无(测试用)','交互','摔倒','禁区入侵','陌生人','生气']
         }
   },
   methods:{

@@ -21,6 +21,7 @@
         },
         methods: {
             initWebSocket(){ //初始化weosocket
+              // const wsuri = "ws://192.168.1.186:8000"
                 const wsuri = "ws://192.168.1.164:8000/ws/link/client/";
                 if ('WebSocket' in window) {
                   this.websock = new WebSocket(wsuri);
@@ -45,8 +46,12 @@
                 this.initWebSocket();
             },
             websocketonmessage(e){ //数据接收
+                alert(e.data)
+                console.log(e.data)
                 // const redata = JSON.parse(e.data);
-                let res = e.data
+                let res = e.data["message"]
+                console.log('message='+res)
+                this.refresh()
                 if(res === 'refresh'){
                     this.refresh()
                 }
