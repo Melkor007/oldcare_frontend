@@ -18,14 +18,14 @@ export default class LineChart extends Vue{
   public initChart() {
     this.chart = echarts.init(document.getElementById(this.id))
     this.chart.setOption({
-      backgroundColor: '#344b58',
+      backgroundColor: 'white',
       title: {
         top: 20,
-        text: '陌生人检测记录',
+        text: '七日内老人情绪记录',
         textStyle: {
           fontWeight: 'normal',
           fontSize: 16,
-          color: '#F1F1F3'
+          color: 'black'
         },
         left: '1%'
       },
@@ -47,7 +47,7 @@ export default class LineChart extends Vue{
         right: '4%',
         textStyle: {
           fontSize: 12,
-          color: '#F1F1F3'
+          color: 'black'
         }
       },
       grid: {
@@ -65,11 +65,11 @@ export default class LineChart extends Vue{
             color: '#57617B'
           }
         },
-        data: ['13:00', '13:05', '13:10', '13:15', '13:20', '13:25', '13:30', '13:35', '13:40', '13:45', '13:50', '13:55']
+        data: ['1','2','3','4','5','6','7']
       }],
       yAxis: [{
         type: 'value',
-        name: '(%)',
+        name: '次数',
         axisTick: {
           show: false
         },

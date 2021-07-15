@@ -71,4 +71,7 @@ export default  {
   getEventList: async () => {
     return await service.get(`${baseUrl}api/events/`, qs.stringify()).then(res => res).catch(err => err)
   },
+  getFacialList: async () => {
+    return await service.get(`${baseUrl}api/events/`, qs.stringify()).then(res => res).catch(err => err)
+  },
 }

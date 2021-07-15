@@ -55,17 +55,12 @@ export default{
           let intrusionEventData = [];
           for (let i = 0; i < len; i++) {
             if(res[i].event_type===1 || res[i].event_type===2){
-              let oldpersonID = res[i].oldperson
-              let oldname = ''
-              service.getOld(oldpersonID).then(res => {
-                oldname = res.username
-                alert(oldname)
-              })
+
               let tmp={
                 ID: res[i].id,
                 date: res[i].event_date,
                 // name: res[i].oldperson_id.username,
-                name:oldname,
+                name:'oldname',
                 address: res[i].event_location,
                 description: res[i].event_desc,
                 tag: res[i].event_type === 1 ? '微笑' : '交互',
@@ -78,11 +73,20 @@ export default{
                 date: res[i].event_date,
                 address: res[i].event_location,
                 description: res[i].event_desc,
-                tag: res[i].event_type === 2 ? '陌生人来访' : (res[i].event_type === 3 ? '摔倒' : '禁止区域入侵'),
+                tag: res[i].event_type === 2 ? '陌生人来访' : (res[i].event_type === 3 ? '摔倒' : '禁区入侵'),
                 img_path: res[i].img_path,
               };
               // intrusionEventData.push(tmp);
             }
+          }
+          for(let i=0;i<elderEventData.length;i++){
+            let oldpersonID = elderEventData[i].ID
+            let oldname = ''
+            service.getOld(oldpersonID).then(res => {
+              oldname = res.username
+              elderEventData[i].name=oldname
+              alert(oldname)
+            })
           }
           this.$refs.elder.setData(elderEventData);
           // this.$refs.intrusion.setData(intrusionEventData);
