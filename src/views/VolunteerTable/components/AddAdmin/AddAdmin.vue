@@ -2,10 +2,10 @@
   <el-dialog title="添加账号" :visible.sync="dialogFormVisible" v-dialogDrag width="25%">
     <el-form :model="form">
       <el-form-item label="名称" :label-width="formLabelWidth">
-        <el-input v-model="form.name" autocomplete="off" class="formItem" placeholder="请输入账号名称"></el-input>
+        <el-input v-model="form.username" autocomplete="off" class="formItem" placeholder="请输入账号名称"></el-input>
       </el-form-item>
       <el-form-item label="性别" :label-width="formLabelWidth">
-        <el-radio-group v-model="form.sex" class="formItem" style="width: auto; margin-top: 13px">
+        <el-radio-group v-model="form.gender" class="formItem" style="width: auto; margin-top: 13px">
           <el-radio label="男">男</el-radio>
           <el-radio label="女">女</el-radio>
         </el-radio-group>
@@ -23,23 +23,25 @@
       <!--        </el-cascader>-->
       <!--      </el-form-item>-->
       <el-form-item label="员工卡号" :label-width="formLabelWidth">
-        <el-input v-model="form.idCard" autocomplete="off" class="formItem" placeholder="请输入员工卡号"></el-input>
+        <el-input v-model="form.id_card" autocomplete="off" class="formItem" placeholder="请输入员工卡号"></el-input>
       </el-form-item>
       <el-form-item label="入职日期" :label-width="formLabelWidth">
-        <el-date-picker
-          v-model="form.date"
-          type="date"
-          placeholder="选择日期"
-          class="formItem">
-        </el-date-picker>
+<!--        <el-date-picker-->
+<!--          v-model="form.checkin_date"-->
+<!--          type="date"-->
+<!--          placeholder="选择日期"-->
+<!--          class="formItem">-->
+<!--        </el-date-picker>-->
+        <el-input v-model="form.checkin_date" autocomplete="off" class="formItem" placeholder="YYYY-MM-DD"></el-input>
       </el-form-item>
       <el-form-item label="离职日期" :label-width="formLabelWidth">
-        <el-date-picker
-          v-model="form.date"
-          type="date"
-          placeholder="选择日期"
-          class="formItem">
-        </el-date-picker>
+<!--        <el-date-picker-->
+<!--          v-model="form.checkout_data"-->
+<!--          type="date"-->
+<!--          placeholder="选择日期"-->
+<!--          class="formItem">-->
+<!--        </el-date-picker>-->
+        <el-input v-model="form.checkout_data" autocomplete="off" class="formItem" placeholder="YYYY-MM-DD"></el-input>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
@@ -52,6 +54,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import service from '@/service/index'
+import {Message} from "element-ui";
 
 interface Add {
   form: Object
@@ -64,11 +67,12 @@ export default class AddAdmin extends Vue implements Add{
   @Prop() private visible!: Boolean
 
   form = {
-    name: '',
+    username: '',
     gender: '',
-    addr: '',
-    email: '',
-    buildtime: '',
+    // addr: '',
+    // email: '',
+    // buildtime: '',
+    phone: '',
     id_card: '',
     checkin_date: '',
     checkout_data: ''
@@ -114,16 +118,21 @@ export default class AddAdmin extends Vue implements Add{
   }
 
   public addAdmin() {
-    service.postOldList(this.form).then(res => {
+    service.postVolunteerList(this.form).then(res => {
       this.dialogFormVisible = false
-      let { code, msg } = res.data
-      if (code == 0) {
-        this.$message({
-          message: msg,
-          type: 'success'
-        })
-      }
+      // let { code, msg } = res.data
+      // if (code == 0) {
+      //   this.$message({
+      //     message: msg,
+      //     type: 'success'
+      //   })
+      // }
       this.$emit('getAdmin')
+      Message({
+        message: `添加成功`,
+        type: 'success',
+        duration: 3 * 1000
+      });
     })
   }
 }

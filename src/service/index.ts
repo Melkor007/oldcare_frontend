@@ -50,18 +50,18 @@ export default  {
   },
 
   getVolunteerList: async () => {
-    return await service.get(`${baseUrl}api/volunteers/`, qs.stringify()).then(res => res.data).catch(err => err)
+    return await service.get(`${baseUrl}api/volunteers/`, qs.stringify()).then(res => res).catch(err => err)
   },
 
   postVolunteerList: async (params: any) => {
-    return await service.post(`${baseUrl}Volunteer/`, { params }).then(res => res).catch(err => err)
+    return await service.post(`${baseUrl}api/volunteers/`, qs.stringify(params)).then(res => res).catch(err => err)
   },
 
-  putVolunteerList: async (params: any) => {
-    return await service.put(`${baseUrl}Volunteer/`, { params }).then(res => res).catch(err => err)
+  putVolunteerList: async (params: any, id) => {
+    return await service.put(`${baseUrl}api/volunteers/${id}/`, qs.stringify(params)).then(res => res).catch(err => err)
   },
 
-  deleteVolunteerList: async (params: any) => {
-    return await service.delete(`${baseUrl}Volunteer/`, { params }).then(res => res).catch(err => err)
+  deleteVolunteerList: async (id) => {
+    return await service.delete(`${baseUrl}api/volunteers/${id}/`, qs.stringify()).then(res => res).catch(err => err)
   }
 }

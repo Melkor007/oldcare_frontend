@@ -14,7 +14,7 @@
               <span>{{ props.row.id }}</span>
             </el-form-item>
             <el-form-item label="名字">
-              <span>{{ props.row.name }}</span>
+              <span>{{ props.row.username }}</span>
             </el-form-item>
             <el-form-item label="性别">
               <span>{{ props.row.gender }}</span>
@@ -43,7 +43,7 @@
       </el-table-column>
       <el-table-column
         label="名字"
-        prop="name"
+        prop="username"
         align="center"
         min-width="150">
       </el-table-column>
@@ -88,6 +88,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import EditAdmin from './EditAdmin/EditAdmin.vue'
 import service from '@/service/index'
+import {Message} from "element-ui";
 
 @Component({
   components: { EditAdmin }
@@ -115,15 +116,14 @@ export default class AdminContent extends Vue{
   }
 
   public handleDel(index, row) {
-    let params = {id: row.id}
-    service.deleteOldList(params).then(res => {
-      let { code, msg } = res.data
-      this.$message({
-        message: msg,
-        type: 'success'
-      })
-      this.$emit('contentFlush')
-    })
+    let id = row.id
+    service.deleteVolunteerList(id)
+    Message({
+      message: `删除成功`,
+      type: 'success',
+      duration: 3 * 1000
+    });
+    this.$emit('contentFlush')
   }
 
   // 当修改完成需要刷新数据（会返回最顶层）
