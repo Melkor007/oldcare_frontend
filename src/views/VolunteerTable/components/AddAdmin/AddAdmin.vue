@@ -65,12 +65,13 @@ export default class AddAdmin extends Vue implements Add{
 
   form = {
     name: '',
-    sex: '',
+    gender: '',
     addr: '',
     email: '',
     buildtime: '',
-    idCard: '',
-    date: ''
+    id_card: '',
+    checkin_date: '',
+    checkout_data: ''
   }
   formLabelWidth = '120px'
 

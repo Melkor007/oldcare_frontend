@@ -5,7 +5,7 @@
         <el-input v-model="form.name" autocomplete="off" class="formItem" placeholder="请输入账号名称"></el-input>
       </el-form-item>
       <el-form-item label="性别" :label-width="formLabelWidth">
-        <el-radio-group v-model="form.sex" class="formItem" style="width: auto; margin-top: 13px">
+        <el-radio-group v-model="form.gender" class="formItem" style="width: auto; margin-top: 13px">
           <el-radio label="男">男</el-radio>
           <el-radio label="女">女</el-radio>
         </el-radio-group>
@@ -23,7 +23,7 @@
 <!--        </el-cascader>-->
 <!--      </el-form-item>-->
       <el-form-item label="员工卡号" :label-width="formLabelWidth">
-        <el-input v-model="form.idCard" autocomplete="off" class="formItem" placeholder="请输入员工卡号"></el-input>
+        <el-input v-model="form.id_card" autocomplete="off" class="formItem" placeholder="请输入员工卡号"></el-input>
       </el-form-item>
 <!--      <el-form-item label="创建时间" :label-width="formLabelWidth">-->
 <!--        <el-date-picker-->
@@ -57,11 +57,14 @@ export default class AddAdmin extends Vue implements Add{
 
   form = {
     name: '',
-    sex: '',
+    gender: '',
     addr: '',
     email: '',
+    phone: '',
     buildtime: '',
-    idCard: ''
+    id_card: '',
+    hire_date: '',
+    resign_data: ''
   }
   formLabelWidth = '120px'
 

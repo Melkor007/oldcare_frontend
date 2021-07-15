@@ -14,7 +14,7 @@
               <span>{{ props.row.id }}</span>
             </el-form-item>
             <el-form-item label="名字">
-              <span>{{ props.row.name }}</span>
+              <span>{{ props.row.gender }}</span>
             </el-form-item>
             <el-form-item label="性别">
               <span>{{ props.row.sex }}</span>
@@ -22,8 +22,17 @@
             <el-form-item label="电话号码">
               <span>{{ props.row.phone }}</span>
             </el-form-item>
-            <el-form-item label="图像">
-              <span><img :src="props.row.image" title="图像示例"></span>
+            <el-form-item label="卡号">
+              <span>{{ props.row.id_card }}</span>
+            </el-form-item>
+            <el-form-item label="出生日期">
+              <span>{{ props.row.birthday }}</span>
+            </el-form-item>
+            <el-form-item label="入职日期">
+              <span>{{ props.row.hire_date }}</span>
+            </el-form-item>
+            <el-form-item label="离职日期">
+              <span>{{ props.row.resign_data }}</span>
             </el-form-item>
           </el-form>
         </template>
@@ -43,7 +52,7 @@
       </el-table-column>
       <el-table-column
         label="性别"
-        prop="sex"
+        prop="gender"
         align="center"
         min-width="150">
       </el-table-column>
@@ -54,8 +63,8 @@
         min-width="150">
       </el-table-column>
       <el-table-column
-        label="员工卡号"
-        prop="idCard"
+        label="卡号"
+        prop="id_card"
         align="center"
         min-width="300">
       </el-table-column>
