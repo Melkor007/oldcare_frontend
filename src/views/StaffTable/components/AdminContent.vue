@@ -14,10 +14,10 @@
               <span>{{ props.row.id }}</span>
             </el-form-item>
             <el-form-item label="名字">
-              <span>{{ props.row.gender }}</span>
+              <span>{{ props.row.username }}</span>
             </el-form-item>
             <el-form-item label="性别">
-              <span>{{ props.row.sex }}</span>
+              <span>{{ props.row.gender }}</span>
             </el-form-item>
             <el-form-item label="电话号码">
               <span>{{ props.row.phone }}</span>
@@ -31,9 +31,9 @@
             <el-form-item label="入职日期">
               <span>{{ props.row.hire_date }}</span>
             </el-form-item>
-            <el-form-item label="离职日期">
-              <span>{{ props.row.resign_data }}</span>
-            </el-form-item>
+<!--            <el-form-item label="离职日期">-->
+<!--              <span>{{ props.row.resign_data }}</span>-->
+<!--            </el-form-item>-->
           </el-form>
         </template>
       </el-table-column>
@@ -46,7 +46,7 @@
       </el-table-column>
       <el-table-column
         label="名字"
-        prop="name"
+        prop="username"
         align="center"
         min-width="150">
       </el-table-column>
@@ -85,6 +85,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import EditAdmin from './EditAdmin/EditAdmin.vue'
 import service from '@/service/index'
+import {Message} from "element-ui";
 
 @Component({
   components: { EditAdmin }
@@ -112,15 +113,14 @@ export default class AdminContent extends Vue{
   }
 
   public handleDel(index, row) {
-    let params = {id: row.id}
-    service.deleteOldList(params).then(res => {
-      let { code, msg } = res.data
-      this.$message({
-        message: msg,
-        type: 'success'
-      })
-      this.$emit('contentFlush')
-    })
+    let id = row.id
+    service.deleteStaffList(id)
+    this.$emit('contentFlush')
+    Message({
+      message: `删除成功`,
+      type: 'success',
+      duration: 3 * 1000
+    });
   }
 
   // 当修改完成需要刷新数据（会返回最顶层）

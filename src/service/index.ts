@@ -34,19 +34,19 @@ export default  {
   },
 
   getStaffList: async () => {
-    return await service.get(`${baseUrl}api/employees/`, qs.stringify()).then(res => res.data).catch(err => err)
+    return await service.get(`${baseUrl}api/employees/`, qs.stringify()).then(res => res).catch(err => err)
   },
 
   postStaffList: async (params: any) => {
     return await service.post(`${baseUrl}api/employees/`, qs.stringify(params)).then(res => res).catch(err => err)
   },
 
-  putStaffList: async (params: any) => {
-    return await service.put(`${baseUrl}Staff/`, { params }).then(res => res).catch(err => err)
+  putStaffList: async (params: any,id) => {
+    return await service.put(`${baseUrl}api/employees/${id}/`, qs.stringify(params)).then(res => res).catch(err => err)
   },
 
-  deleteStaffList: async (params: any) => {
-    return await service.delete(`${baseUrl}Staff/`, { params }).then(res => res).catch(err => err)
+  deleteStaffList: async (id:any) => {
+    return await service.delete(`${baseUrl}api/employees/${id}/`, qs.stringify()).then(res => res).catch(err => err)
   },
 
   getVolunteerList: async () => {

@@ -44,8 +44,8 @@ export default class AdminHead extends Vue implements Admin{
 
   // 请求table数据
   public getAdmin() {
-    let params = Object.assign({}, this.form, {page: this.page })
     service.getStaffList().then(res => {
+      console.log(res)
       this.downloadData = res
       this.$emit('getHeadData', res, false)
     })
