@@ -5,6 +5,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import myMixins from '../mixins/resize'
+import service from '@/service/index';
 declare let echarts: any;
 
 @Component({
@@ -15,8 +16,45 @@ export default class LineChart extends Vue{
   @Prop() private width !: String
   @Prop() private height !: String
 
+  oldManData: Array<any> = []
+  ageData: Array<any> = [0,0,0,0,0,0,0,0]
+
+  public getAge() {
+    service.getOldList().then(res => {
+      console.log(res)
+      this.oldManData = res
+    })
+    for(let i:number = 0; i < this.oldManData.length; i++){
+      if(this.oldManData[i].age > 20 && this.oldManData[i].age <= 30){
+        this.ageData[0]++
+      }
+      else if(this.oldManData[i].age > 30 && this.oldManData[i].age <= 40){
+        this.ageData[1]++
+      }
+      else if(this.oldManData[i].age > 40 && this.oldManData[i].age <= 50){
+        this.ageData[2]++
+      }
+      else if(this.oldManData[i].age > 50 && this.oldManData[i].age <= 60){
+        this.ageData[3]++
+      }
+      else if(this.oldManData[i].age > 60 && this.oldManData[i].age <= 70){
+        this.ageData[4]++
+      }
+      else if(this.oldManData[i].age > 70 && this.oldManData[i].age <= 80){
+        this.ageData[5]++
+      }
+      else if(this.oldManData[i].age > 80 && this.oldManData[i].age <= 90){
+        this.ageData[6]++
+      }
+      else if(this.oldManData[i].age > 90 && this.oldManData[i].age <= 100){
+        this.ageData[7]++
+      }
+    }
+  }
+
   public initChart() {
     this.chart = echarts.init(document.getElementById(this.id))
+    this.getAge()
     const xData = (function() {
       const data: Array<any> = []
       for (let i: number = 20; i < 100; i=i+10) {
@@ -63,7 +101,7 @@ export default class LineChart extends Vue{
           textStyle: {
             color: '#90979c'
           },
-          data: ['volunteer', 'staff', 'elder']
+          data: ['Old People']
         },
         calculable: true,
         xAxis: [{
@@ -135,96 +173,90 @@ export default class LineChart extends Vue{
           start: 1,
           end: 35
         }],
-        series: [{
-          name: '员工',
-          type: 'bar',
-          stack: 'total',
-          barMaxWidth: 35,
-          barGap: '10%',
-          itemStyle: {
-            normal: {
-              color: 'rgba(255,144,128,1)',
-              label: {
-                show: true,
-                textStyle: {
-                  color: '#fff'
-                },
-                position: 'insideTop',
-                formatter(p) {
-                  return p.value > 0 ? p.value : ''
+        series: [
+        //   {
+        //   name: '员工',
+        //   type: 'bar',
+        //   stack: 'total',
+        //   barMaxWidth: 35,
+        //   barGap: '10%',
+        //   itemStyle: {
+        //     normal: {
+        //       color: 'rgba(255,144,128,1)',
+        //       label: {
+        //         show: true,
+        //         textStyle: {
+        //           color: '#fff'
+        //         },
+        //         position: 'insideTop',
+        //         formatter(p) {
+        //           return p.value > 0 ? p.value : ''
+        //         }
+        //       }
+        //     }
+        //   },
+        //   data: [
+        //     182,
+        //     304,
+        //     173,
+        //     148,
+        //     10,
+        //     1,
+        //     0,
+        //     0
+        //   ]
+        // },
+        //
+        // {
+        //   name: '义工',
+        //   type: 'bar',
+        //   stack: 'total',
+        //   itemStyle: {
+        //     normal: {
+        //       color: 'rgba(0,191,183,1)',
+        //       barBorderRadius: 0,
+        //       label: {
+        //         show: true,
+        //         position: 'top',
+        //         formatter(p) {
+        //           return p.value > 0 ? p.value : ''
+        //         }
+        //       }
+        //     }
+        //   },
+        //   data: [
+        //     282,
+        //     401,
+        //     124,
+        //     122,
+        //     0,
+        //     0,
+        //     0,
+        //     0
+        //   ]
+        // },
+          {
+            name: '老人',
+            type: 'bar',
+            stack: 'total',
+            symbolSize: 10,
+            symbol: 'circle',
+            itemStyle: {
+              normal: {
+                color: 'rgba(252,230,48,1)',
+                barBorderRadius: 0,
+                label: {
+                  show: true,
+                  position: 'top',
+                  formatter(p) {
+                    return p.value > 0 ? p.value : ''
+                  }
                 }
               }
-            }
-          },
-          data: [
-            182,
-            304,
-            173,
-            148,
-            10,
-            1,
-            0,
-            0
-          ]
-        },
+            },
+            data: this.ageData
 
-        {
-          name: '义工',
-          type: 'bar',
-          stack: 'total',
-          itemStyle: {
-            normal: {
-              color: 'rgba(0,191,183,1)',
-              barBorderRadius: 0,
-              label: {
-                show: true,
-                position: 'top',
-                formatter(p) {
-                  return p.value > 0 ? p.value : ''
-                }
-              }
-            }
-          },
-          data: [
-            282,
-            401,
-            124,
-            122,
-            0,
-            0,
-            0,
-            0
-          ]
-        }, {
-          name: '老人',
-          type: 'bar',
-          stack: 'total',
-          symbolSize: 10,
-          symbol: 'circle',
-          itemStyle: {
-            normal: {
-              color: 'rgba(252,230,48,1)',
-              barBorderRadius: 0,
-              label: {
-                show: true,
-                position: 'top',
-                formatter(p) {
-                  return p.value > 0 ? p.value : ''
-                }
-              }
-            }
-          },
-          data: [
-            0,
-            0,
-            0,
-            0,
-            231,
-            240,
-            32,
-            18
-          ]
-        }
+          }
         ]
       })
   }
