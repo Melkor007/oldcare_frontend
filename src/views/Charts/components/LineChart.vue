@@ -15,6 +15,13 @@ export default class LineChart extends Vue{
   @Prop() private width !: String
   @Prop() private height !: String
 
+  happyData: Array<any> = [0,1,0,3,0,5,5]
+  angerData: Array<any> = [0,0,2,0,4,0,1]
+  surprisedData: Array<any> = [0,4,0,0,2,0,0]
+  sadnessData: Array<any> = [0,0,0,0,1,0,2]
+
+
+
   public initChart() {
     this.chart = echarts.init(document.getElementById(this.id))
     this.chart.setOption({
@@ -43,7 +50,7 @@ export default class LineChart extends Vue{
         itemWidth: 14,
         itemHeight: 5,
         itemGap: 13,
-        data: ['与老人互动', '与员工互动', '与义工互动', "没有互动"],
+        data: ['Happy', 'Anger', 'Surprised', "Sadness"],
         right: '4%',
         textStyle: {
           fontSize: 12,
@@ -91,7 +98,7 @@ export default class LineChart extends Vue{
         }
       }],
       series: [{
-        name: '与老人互动',
+        name: 'Happy',
         type: 'line',
         smooth: true,
         symbol: 'circle',
@@ -123,9 +130,9 @@ export default class LineChart extends Vue{
 
           }
         },
-        data: [220, 182, 191, 134, 150, 120, 110, 125, 145, 122, 165, 122]
+        data: this.happyData
       }, {
-        name: '与员工互动',
+        name: 'Anger',
         type: 'line',
         smooth: true,
         symbol: 'circle',
@@ -157,9 +164,9 @@ export default class LineChart extends Vue{
 
           }
         },
-        data: [120, 110, 125, 145, 122, 165, 122, 220, 182, 191, 134, 150]
+        data: this.angerData
       }, {
-        name: '与义工互动',
+        name: 'Surprise',
         type: 'line',
         smooth: true,
         symbol: 'circle',
@@ -190,9 +197,9 @@ export default class LineChart extends Vue{
             borderWidth: 12
           }
         },
-        data: [220, 182, 125, 145, 122, 191, 134, 150, 120, 110, 165, 122]
+        data: this.surprisedData
       },{
-        name: '没有互动',
+        name: 'Sadness',
         type: 'line',
         smooth: true,
         symbol: 'circle',
@@ -224,7 +231,7 @@ export default class LineChart extends Vue{
 
           }
         },
-        data: [250, 145, 200, 210, 156, 140, 150, 210, 130, 122, 140, 110]
+        data: this.sadnessData
       }]
     })
   }

@@ -65,7 +65,7 @@ export default class LineChart extends Vue{
     this.chart.setOption({
         backgroundColor: '#344b58',
         title: {
-          text: '人员年龄分布',
+          text: '老人年龄分布',
           x: '20',
           top: '20',
           textStyle: {
@@ -154,7 +154,7 @@ export default class LineChart extends Vue{
           ],
           bottom: 30,
           start: 0,
-          end: 90,
+          end: 100,
           handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
           handleSize: '110%',
           handleStyle: {
