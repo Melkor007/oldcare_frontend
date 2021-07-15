@@ -41,7 +41,7 @@ module.exports = {
     proxy:  {
       '/api': {
         // 目标 API 地址
-        target: 'http://172.20.10.10:8000',
+        target: 'http://192.168.255.1:8000',
         // 如果要代理 websockets
         // ws: false,
         changeOrigin: true, // 允许websockets跨域

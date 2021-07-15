@@ -39,28 +39,39 @@ export default{
     IntrusionEvent
   },
   $refs: {quickEntry: HTMLFormElement},
+  data(){
+      return{
+        mapping:['无(测试用)','微笑','义工交互','摔倒','禁区入侵','陌生人']
+        }
+  },
   methods:{
       getEvents() {
-        alert("holy shii")
         let data = {};
-        service.testt().then(res => {
+        service.getEventList().then(res => {
           console.log(res);
           let len = res.length;
           console.log(len);
           let elderEventData = [];
           let intrusionEventData = [];
           for (let i = 0; i < len; i++) {
-            if(res[i].event_type===0 || res[i].event_type===1){
+            if(res[i].event_type===1 || res[i].event_type===2){
+              let oldpersonID = res[i].oldperson
+              let oldname = ''
+              service.getOld(oldpersonID).then(res => {
+                oldname = res.username
+                alert(oldname)
+              })
               let tmp={
                 ID: res[i].id,
                 date: res[i].event_date,
-                name: res[i].oldperson_id.username,
+                // name: res[i].oldperson_id.username,
+                name:oldname,
                 address: res[i].event_location,
                 description: res[i].event_desc,
-                tag: res[i].event_type === 0 ? '微笑' : '交互',
+                tag: res[i].event_type === 1 ? '微笑' : '交互',
                 img_path: res[i].img_path,
               };
-              // elderEventData.push(tmp);
+              elderEventData.push(tmp);
             }else{
               let tmp={
                 ID: res[i].id,
@@ -73,11 +84,14 @@ export default{
               // intrusionEventData.push(tmp);
             }
           }
-          // this.$refs.elder.setData(elderEventData);
+          this.$refs.elder.setData(elderEventData);
           // this.$refs.intrusion.setData(intrusionEventData);
         })
       },
-    }
+  },
+  created() {
+    this.getEvents()
+  }
 }
 
 </script>

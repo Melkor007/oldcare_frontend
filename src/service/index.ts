@@ -21,6 +21,10 @@ export default  {
     return await service.get(`${baseUrl}api/oldpersons/`, qs.stringify()).then(res => res).catch(err => err)
   },
 
+  getOld: async (id:any) => {
+    return await service.get(`${baseUrl}api/oldpersons/${id}`, qs.stringify()).then(res => res).catch(err => err)
+  },
+
   postOldList: async (params: any) => {
     return await service.post(`${baseUrl}api/oldpersons/`, qs.stringify(params)).then(res => res).catch(err => err)
   },
@@ -63,5 +67,8 @@ export default  {
 
   deleteVolunteerList: async (id) => {
     return await service.delete(`${baseUrl}api/volunteers/${id}/`, qs.stringify()).then(res => res).catch(err => err)
-  }
+  },
+  getEventList: async () => {
+    return await service.get(`${baseUrl}api/events/`, qs.stringify()).then(res => res).catch(err => err)
+  },
 }
