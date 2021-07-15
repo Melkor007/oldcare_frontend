@@ -23,7 +23,7 @@ export default {
         var videoElement = document.getElementById('videoElement');
         var flvPlayer = flvjs.createPlayer({
           type: 'flv',
-          url: 'http://localhost:8070/live?port=1935&app=live&stream=0' //你的url地址
+          url: 'http://server.cryyin.top:8070/live?port=1935&app=live&stream=0' //你的url地址
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();
