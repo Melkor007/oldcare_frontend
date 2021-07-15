@@ -17,11 +17,11 @@
       <el-form-item>
         <el-button class="loginButton" type="primary" @click="submitForm('ruleForm')" :loading="logining">登录</el-button>
       </el-form-item>
-      <el-form-item>
-        <el-button class="loginButton" @click="test">
-          aaa
-        </el-button>
-      </el-form-item>
+<!--      <el-form-item>-->
+<!--        <el-button class="loginButton" @click="test">-->
+<!--          aaa-->
+<!--        </el-button>-->
+<!--      </el-form-item>-->
     </el-form>
   </div>
 </template>
